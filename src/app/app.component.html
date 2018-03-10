@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-button color="accent" class="home" routerLink="/home">
+            KtC
+        </button>
+        <button mat-button class="pageLink" routerLink="/writing" routerLinkActive="active">
+            Writing
+        </button>
+        <button mat-button class="pageLink">
+            Code
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="mat-app-background" style="height: 91vh; width: 100%">
+    <router-outlet></router-outlet>
+</div>
