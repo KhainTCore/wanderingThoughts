@@ -1,2 +1,16 @@
-<h1>Writing</h1>
-<h2>Coming Soon...</h2>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+        <table-of-contents></table-of-contents>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="sidenav-content">
+        <mat-grid-list cols="4" rowHeight="fit" class="full">
+            <mat-grid-tile [colspan]="3" class="row-top left-align">
+                <text-viewer class="row-top left-align"></text-viewer>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" class="row-top right-align">
+                <table-of-contents></table-of-contents>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-sidenav-content>
+</mat-sidenav-container>

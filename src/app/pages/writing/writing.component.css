@@ -1,0 +1,32 @@
+.full {
+    height: 100%;
+}
+
+.row-top > ::ng-deep figure {
+    align-items: flex-start !important;
+}
+
+.left-align > ::ng-deep figure {
+    justify-content: left !important;
+}
+
+.right-align > ::ng-deep figure {
+    justify-content: right !important;
+}
+
+.sidenav {
+    display: flex;
+    width: 15vw;
+}
+
+.sidenav-container {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.sidenav-content {
+    padding-left: 10px;
+}
