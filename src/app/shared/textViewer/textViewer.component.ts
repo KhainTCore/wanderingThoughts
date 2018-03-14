@@ -8,21 +8,14 @@ import { Component, Output, OnInit, Input } from "@angular/core";
 
 export class TextViewerComponent implements OnInit {
 
-    private parsedText: string[] = [];
-    
-    @Input() text: string = "Annie are you ok?\n Are you ok?\n Are you ok, Annie?";
+    @Input() text: string = "SmoothCriminal<br>Annie are you ok?<br>Are you ok?<br>Are you ok, Annie?";
+    @Input() title: string = "Story Title";
 
     constructor() {
 
     }
 
     ngOnInit() {
-        this.parsedText = this.parseText();
-    }
 
-    parseText(): string[] {
-        let chunks: string[] = this.text.split(/\n|\r\n/);
-        return chunks;
     }
-
 }

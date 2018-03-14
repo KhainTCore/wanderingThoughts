@@ -1,4 +1,6 @@
 import { NgModule } from "@angular/core";
+import { MatDividerModule } from "@angular/material";
+
 import { TableOfContentsComponent, TextViewerComponent } from ".";
 import { CommonModule } from "@angular/common";
 
@@ -10,7 +12,7 @@ import { CommonModule } from "@angular/common";
         TableOfContentsComponent, TextViewerComponent
     ],
     imports: [
-        CommonModule
+        CommonModule, MatDividerModule
     ]
 })
 

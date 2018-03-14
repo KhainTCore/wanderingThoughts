@@ -1,0 +1,25 @@
+.content {
+    float: right;
+}
+
+.left-col {
+    margin-right: 8px;
+    width: 2px;
+}
+
+.right-col {
+    flex: 1;
+}
+
+.row {
+    display: flex; /* Children will have equal height */
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+}
