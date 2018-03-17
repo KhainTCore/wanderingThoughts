@@ -4,9 +4,9 @@
   "description": "Personal website to post up stuff and experiment with.",
   "main": "index.js",
   "scripts": {
-    "start": "rimraf dist && webpack --config webpack.config.js --progress --profile --bail && node src/app.js",
-    "debug": "node --nolazy --debug-brk=5858 src/app.js",
     "build": "rimraf dist && webpack --config webpack.config.js --progress --profile --bail",
+    "debug": "node --nolazy --debug-brk=5858 server/server.js",
+    "start": "node server/server.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "web-start": "webpack-dev-server --config webpack.config.js --inline --progress --port 8082"
@@ -29,8 +29,13 @@
     "@angular/router": "~5.0.0",
     "@angular/upgrade": "~5.0.0",
     "angular-in-memory-web-api": "~0.5.0",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "rxjs": "^5.5.0",
+    "serve-favicon": "^2.4.5",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
