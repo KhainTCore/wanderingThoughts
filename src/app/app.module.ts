@@ -1,3 +1,4 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatToolbarModule } from '@angular/material';
 import { BrowserModule }  from '@angular/platform-browser';
@@ -10,7 +11,7 @@ import { AppComponent } from './app.component';
  
 @NgModule({
   imports: [
-    BrowserModule, AppRoutingModule, CoreModule, MatButtonModule, MatToolbarModule, PagesModule
+    BrowserModule, AppRoutingModule, CoreModule, HttpClientModule, MatButtonModule, MatToolbarModule, PagesModule
   ],
   declarations: [
     AppComponent

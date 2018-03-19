@@ -1,12 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="side" opened class="sidenav">
-        <table-of-contents></table-of-contents>
+        <table-of-contents border="false"></table-of-contents>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
         <mat-grid-list cols="4" rowHeight="fit" class="full">
             <mat-grid-tile [colspan]="3" class="row-top left-align">
-                <text-viewer class="row-top left-align"></text-viewer>
+                <text-viewer class="row-top left-align" [(text)]="file"></text-viewer>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" class="row-top right-align">
                 <table-of-contents></table-of-contents>

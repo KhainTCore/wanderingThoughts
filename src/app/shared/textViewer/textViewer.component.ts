@@ -8,7 +8,7 @@ import { Component, Output, OnInit, Input } from "@angular/core";
 
 export class TextViewerComponent implements OnInit {
 
-    @Input() text: string = "SmoothCriminal<br>Annie are you ok?<br>Are you ok?<br>Are you ok, Annie?";
+    @Input() text: {_body: string, _style: string} = {_body: "", _style: ""};
     @Input() title: string = "Story Title";
 
     constructor() {

@@ -1,3 +1,6 @@
-<h1 class="center">{{title}}</h1>
+<h1 id="title" class="center">{{title}}</h1>
 <mat-divider></mat-divider>
-<div class="text-body" [innerHtml]="text"></div>
+<div class="container">
+    <div id="body" class="box text-body" [innerHtml]="text._body"></div>
+    <div id="bottom"></div>
+</div>

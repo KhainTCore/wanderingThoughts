@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="left-col" *ngIf="boarder" [ngStyle]="{'background-color': borderColour}"></div>
+    <div class="left-col" *ngIf="border" [ngStyle]="{'background-color': borderColour}"></div>
     <div class="right-col">
         <ul>
             <li *ngFor="let link of content" [ngStyle]="{'padding-left.px': link.level * indentSize}">

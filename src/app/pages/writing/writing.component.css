@@ -28,5 +28,6 @@
 }
 
 .sidenav-content {
+    width: 85vw;
     padding-left: 10px;
 }
