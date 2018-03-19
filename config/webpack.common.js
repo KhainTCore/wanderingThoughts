@@ -5,7 +5,7 @@ var helpers = require('./helpers');
 
 module.exports = {
   entry: { // Entry point files that define the bundles
-    // 'polyfills': './src/polyfills.ts',
+    'polyfills': './config/polyfills.ts',
     'vendor': './config/vendor.ts',
     'app': './src/main.ts'
   },
@@ -57,7 +57,7 @@ module.exports = {
     ),
 
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor'/* , 'polyfills' */]
+      name: ['app', 'vendor', 'polyfills']
     }),
 
     new HtmlWebpackPlugin({

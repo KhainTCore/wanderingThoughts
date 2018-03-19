@@ -1,18 +1,17 @@
 // Angular
-import '@angular/platform-browser';
-import '@angular/platform-browser-dynamic';
-import '@angular/core';
-import '@angular/common';
-import '@angular/http';
-import '@angular/router';
-import '@angular/material';
+import "@angular/platform-browser";
+import "@angular/platform-browser-dynamic";
+import "@angular/core";
+import "@angular/common";
+import "@angular/http";
+import "@angular/router";
+import "@angular/material";
 
 // Angular Required
-import 'rxjs';
-import "zone.js";
+import "rxjs";
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
 
 // Angular CSS
-import '@angular/material/prebuilt-themes/purple-green.css';
+import "@angular/material/prebuilt-themes/purple-green.css";
