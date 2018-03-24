@@ -1,2 +1,34 @@
-<h1>Home Page</h1>
-<h2>Coming Soon...</h2>
+<mat-grid-list cols="3" rowHeight="fit" class="full">
+    <mat-grid-tile [colspan]="1" class="row-top left-align">
+        <mat-card class="card-padding-sm">
+            <mat-card-header>
+                <mat-card-title>Welcome to Wandering Thoughts</mat-card-title>
+                <mat-card-subtitle>Drawing by: distar, a.k.a eriume, a.k.a G of a Thousand Names</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <img src="../../../assets/1D2B78E0-7339-405E-9111-F4CA711BDB3E.jpeg" class="selfie"/>
+                <p>
+                    Everything here is just a hobby, a way of self-expression, or just playing at
+                    something that has piqued my interest. From the Stories and Poetry that I write
+                    when I'm bored or on an adventure, to the website itself (which I coded from scratch - ugh).
+                    (Side Note - if you like any aspect of the site, all my code is open source, feel free to
+                    make use of some of it.).
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" class="row-top right-align">
+        <mat-card class="card-padding-sm">
+            <mat-card-header>
+                <mat-card-title>Sea of Clouds</mat-card-title>
+                <mat-card-subtitle>Big Sur State Park, CA</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div style="height:600px; width:800px; background-color: green"></div>
+                <p>
+                    Hopefully the pretty will distract you from the stark empty here.
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

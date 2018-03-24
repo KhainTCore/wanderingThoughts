@@ -1,0 +1,14 @@
+.full {
+    height: 100%;
+}
+
+.card-padding-sm
+ {
+    margin: 10px 10px 10px 10px;
+}
+
+.selfie {
+    display: block;
+    margin: 0 auto;
+    width: calc(64% + 48px);
+}
