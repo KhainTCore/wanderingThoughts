@@ -5,7 +5,7 @@ import express, { Request, Response, NextFunction } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
-import * as fetchWriting from "./routes/fetchWriting";
+import * as fetchFiles from "./routes/fetchFiles";
 
 const app = express();
 
@@ -23,13 +23,13 @@ app.set("env", "development");
 // Serve up webpacked content as "root" - achieved by .static
 app.use(express.static(app.get("app")));
 
-// Serve initial page
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-    res.sendFile("index.html", {"root": app.get("app")});
-});
-
 // Routes
-app.use("/fetchWriting", fetchWriting);
+app.use("/api/fetchFiles", fetchFiles);
+
+// Keep the front-end router from killing itself
+app.get('*', (req, res) => {
+    res.sendFile(app.get("app") + "/index.html");
+});
 
 // Dev error handler
 if (app.get("env") === "development") {
@@ -37,12 +37,7 @@ if (app.get("env") === "development") {
         res.status(err.status || 500);
         res.json({message: err.message, error: err});
     });
-}
-
-// Catch 404 errors and forward them to error handler
-app.use((req: Request, res: Response, next: NextFunction) => {
-    next(new Error("HTTP Response 404: Not Found"));
-});
+} 
 
 // Production Error Handler - no stacktrace provided to user
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

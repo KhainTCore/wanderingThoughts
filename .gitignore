@@ -61,5 +61,7 @@ typings/
 dist
 
 # misc.
-docs
 .vscode
+docs
+poems
+stories
