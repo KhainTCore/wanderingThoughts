@@ -3,6 +3,8 @@ const fs = require("fs");
 const helpers = require("../../config/helpers");
 import { NextFunction, Request, Response } from "express";
 
+const HtmlFile = require("../lib/htmlFile");
+
 const router = express.Router();
 
 router.use(function fetchWriting(req: Request, res: Response, next: NextFunction) {
@@ -16,7 +18,7 @@ router.get("/story", function(req: Request, res: Response, next: NextFunction) {
             if (err)
                 next(new Error("No file by that name was found."));
             
-            let html: htmlFile = new htmlFile(data, data, true);
+            let html: HtmlFile = new HtmlFile(data, data, true);
             res.status(200).json({story: html});
         });
     } else {
@@ -49,68 +51,6 @@ router.get("/poem", function(req: Request, res: Response, next: NextFunction) {
 router.get("/poemList", function(req: Request, res: Response, next: NextFunction) {
     next(new Error("Not Implemented Yet"));
 });
-
-class htmlFile {
-    private _body: string;
-    private _style: string;
-
-    constructor(body?: string, style?: string, parse?: boolean) {
-        if (parse) {
-            this.body = this.parseTag(body, "body");
-            this.style = this.parseTag(style, "style");
-        } else {
-            this.body = body;
-            this.style = style;
-        }
-    }
-
-    get body() {
-        return this._body;
-    }
-
-    get style() {
-        return this._style;
-    }
-
-    set body(html: string) {
-        this._body = html;
-    }
-
-    set style(css: string) {
-        this._style = css;
-    }
-
-    /**
-     * Parses out all html except for the content of tag.  
-     * Note: There is no validation of html. If the html is invalid, tags are unbalanced
-     * it will parse, the results be what they may. 
-     * 
-     * @param {string} html the html to be parsed
-     * @param {string} htmlTag tag name (ex. "body", "style", etc.)
-     * @param {boolean} [newline] if the returned value has newline characters or not
-     * @returns {string} 
-     * @memberof htmlFile
-     */
-    parseTag(html: string, htmlTag: string, newline?: boolean): string {
-        let result = [];
-        let found = false;
-        let tag = new RegExp(`<${htmlTag}`);
-        let tagEnd = new RegExp(`</${htmlTag}>`);
-        for (let line of html.split(/\n|\r\n/)) {
-            if (tag.test(line) || tagEnd.test(line)) {
-                found = !found;
-                continue; // Don't grab htmlTag
-            }
-
-            if (found)
-                result.push(line);
-
-        }
-
-        return result.join(newline ? "\n" : "");
-    }
-}
-
 
 // Can't mix import and module.exports
 // Express requires module.exports, export will cause a typeError
