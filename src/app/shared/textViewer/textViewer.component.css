@@ -1,15 +1,16 @@
+.box {
+    display: flex;
+}
+
 .center {
     text-align: center;
 }
 
-.box {
-    display: flex;
-    height: 100vh;
-}
 
 .container {
     display: flex;
     flex: 1;
+    height: calc((100% - 5.5em)); /* offset by size of header */        
     overflow: auto;
 }
 
@@ -31,5 +32,9 @@
 }
 
 .text-body {
-    margin-top: 15px;
+    margin-top: 5px;
+}
+
+p.MsoNormal {
+    text-indent: 4em !important;
 }

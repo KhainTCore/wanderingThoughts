@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 
 @Component({
     selector: "table-of-contents",
@@ -9,25 +9,49 @@ import { Component, Input } from "@angular/core";
 export class TableOfContentsComponent { 
     @Input() border: boolean = true;
     @Input() borderColour: string = "#294F6D";
-    @Input() content: Content[] = [
-        {title: "Ch. 1", target: "#", level: 0},
-        {title: "Sec. 1", target: "sec", level: 1},
-        {title: "Ch. 2", target: "", level: 0}
-    ];
+    @Input() content: Content[] = [];
+    @Input() disableLinks: boolean = false;
     @Input() indentSize: number = 5;
     @Input() textColour: string = "white";
+    @Input() title: string;
+
+    @Output() onSelected = new EventEmitter<Content>();
 
     constructor() { }
+
+    /**
+     * Emits the selected content to the wired receiver
+     * 
+     * @param {Content} content selected value 
+     * @memberof TableOfContentsComponent
+     */
+    select(content: Content) {
+        this.onSelected.emit(content);
+    }
 }
-
+/**
+ * A pseudo-interface that creates an exposed API for a Link's strucutre in the TableOfContents 
+ * Component
+ * 
+ * @export
+ * @class Content
+ */
 export class Content {
-    public title: string;
-    public target: string;
     public level: number;
+    public target: string;
+    public title: string;
 
-    constructor(title: string, target: string, level: number) {
-        this.title = title;
+    /**
+     * Creates an instance of Content.
+     * 
+     * @param {string} title Display value for the Link, default: null
+     * @param {number} [level] Indentation/nesting level, default: 0
+     * @param {string} [target] Points to location on the DOM, default: null
+     * @memberof Content
+     */
+    constructor(title: string, level?: number, target?: string) {
+        this.level = level || 0;
         this.target = target;
-        this.level = level;
+        this.title = title;
     }
 }

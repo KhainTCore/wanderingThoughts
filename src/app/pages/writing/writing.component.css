@@ -1,5 +1,6 @@
 .full {
     height: 100%;
+    width: 100%;
 }
 
 .row-top > ::ng-deep figure {
@@ -28,6 +29,6 @@
 }
 
 .sidenav-content {
+    margin-left: 16vw !important;
     width: 85vw;
-    padding-left: 10px;
 }

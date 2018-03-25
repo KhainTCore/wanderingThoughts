@@ -1,10 +1,19 @@
 <div class="row">
     <div class="left-col" *ngIf="border" [ngStyle]="{'background-color': borderColour}"></div>
     <div class="right-col">
+        <h1 class="header">{{title}}</h1>
         <ul>
             <li *ngFor="let link of content" [ngStyle]="{'padding-left.px': link.level * indentSize}">
-                <a [href]="link.target" [ngStyle]="{'color': textColour}">{{link.title}}</a>
+                <a *ngIf="link.target" [href]="link.target">
+                    {{link.title}}
+                </a>
+
+                <button *ngIf="!link.target" class="button-link" (click)="select(link)" [disabled]="disableLinks">
+                    {{link.title}}
+                </button>
             </li>
         </ul>
     </div>
 </div>
+
+<!-- Anchors are causing the odd reloading issue with the application. Fuck me. -->

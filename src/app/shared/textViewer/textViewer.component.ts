@@ -1,4 +1,6 @@
-import { Component, Output, OnInit, Input } from "@angular/core";
+import { Component, Output, Input } from "@angular/core";
+
+import { Story } from "../";
 
 @Component({
     selector: "text-viewer",
@@ -6,16 +8,10 @@ import { Component, Output, OnInit, Input } from "@angular/core";
     templateUrl: "./textViewer.component.html"
 })
 
-export class TextViewerComponent implements OnInit {
+export class TextViewerComponent {
 
-    @Input() text: {_body: string, _style: string} = {_body: "", _style: ""};
-    @Input() title: string = "Story Title";
+    @Input() text: Story = new Story("");
+    @Input() title: string = "Title";
 
-    constructor() {
-
-    }
-
-    ngOnInit() {
-
-    }
+    constructor() {}
 }
