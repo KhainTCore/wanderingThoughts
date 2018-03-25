@@ -1,7 +1,9 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { MatDividerModule, MatGridListModule, MatSidenavModule } from "@angular/material";
+import { 
+        MatCardModule, MatDividerModule, MatGridListModule, MatSidenavModule 
+    } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { CodeComponent, HomeComponent, PageNotFoundComponent, WritingComponent } from ".";
@@ -16,7 +18,8 @@ import { SharedModule } from "../shared/shared.module";
         CodeComponent, HomeComponent, PageNotFoundComponent, WritingComponent
     ],
     imports: [
-        CommonModule, BrowserAnimationsModule, FormsModule, MatDividerModule, MatGridListModule, MatSidenavModule, SharedModule
+        CommonModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatDividerModule, 
+        MatGridListModule, MatSidenavModule, SharedModule
     ]
 })
 
