@@ -1,21 +1,29 @@
 .full {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    overflow: auto;
 }
 
-.card-padding-sm
- {
-    margin: 10px 10px 10px 10px;
+.footer {
+    min-height: 32px;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-.two-thirds {
-    width: calc(100% - 0px);
+.page-padding-sm {
+    width: 75%;
 }
 
 .selfie {
-    width: calc(64% + 48px);
+    width: calc(16% + 48px);
 }
 
-img {
-    display: block;
-    margin: 0 auto;
+p {
+    font-size: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+
 }

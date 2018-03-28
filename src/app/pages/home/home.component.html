@@ -1,34 +1,25 @@
-<mat-grid-list cols="3" rowHeight="fit" class="full">
-    <mat-grid-tile [colspan]="1" class="row-top left-align">
-        <mat-card class="card-padding-sm">
-            <mat-card-header>
-                <mat-card-title>Welcome to Wandering Thoughts</mat-card-title>
-                <mat-card-subtitle>Drawing by: distar, a.k.a eriume, a.k.a G of a Thousand Names</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <img src="../../../assets/1D2B78E0-7339-405E-9111-F4CA711BDB3E.jpeg" class="selfie"/>
-                <p>
-                    Everything here is just a hobby, a way of self-expression, or just playing at
-                    something that has piqued my interest. From the Stories and Poetry that I write
-                    when I'm bored or on an adventure, to the website itself (which I coded from scratch - ugh).
-                    (Side Note - if you like any aspect of the site, all my code is open source, feel free to
-                    make use of some of it.).
-                </p>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" class="row-top right-align">
-        <mat-card class="card-padding-sm">
-            <mat-card-header>
-                <mat-card-title>Sea of Clouds</mat-card-title>
-                <mat-card-subtitle>Big Sur State Park, CA</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <img src="../../../assets/2018 03 11 big sur.jpg" class="two-thirds"/>
-                <p>
-                    Hopefully the pretty will distract you from the stark empty here.
-                </p>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="full">
+    <h1>Welcome to Wandering Thoughts</h1>
+    <img src="../../../assets/1D2B78E0-7339-405E-9111-F4CA711BDB3E.jpeg" class="selfie"/>
+    <span class="caption">Me by eriume, a.k.a distar, a.k.a G of a Thousand Names</span>
+    <p>
+        This webiste is really more of an expression of hobbies, than anything else. Each
+        pag is dedicated to specific hobby of mine, from writing and coding to photography.
+        Even Wandering Thoughts itself is code I've written, as a means of experimentation adventure
+        centralizing where I put everything (Side note, all my code is open source, so if you want to
+        use any of it, feel free).
+    </p> 
+    <mat-divider class="page-padding-sm"></mat-divider>
+    <h2>Note</h2>
+    <p>
+        Everthing is still fairly beta, sitting at version 0.1. If you find any bugs or have suggestions
+        for improvement please shoot on over to the github page (link in the footer), and make an issue.
+        ... I'm out of words at the moment, so feel free to explore - and thanks for spending some time
+        with me.
+    </p>   
+    <mat-toolbar color="primary" class="footer">
+        <mat-toolbar-row>
+            <span>Version 0.1</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
