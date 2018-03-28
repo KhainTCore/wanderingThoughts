@@ -8,7 +8,7 @@ import { of } from "rxjs/observable/of";
 export class FileFetcherService {
 
     private fetFilesUrl = "api/fetchFiles";
-    private poemUrl = `${this.fetFilesUrl}/fetchPoem`;
+    private poemUrl = `${this.fetFilesUrl}/fetchPoems`;
     private poemListUrl = `${this.fetFilesUrl}/poemList`;
     private storyUrl = `${this.fetFilesUrl}/story`;
     private storyListUrl = `${this.fetFilesUrl}/storyList`;
@@ -19,7 +19,7 @@ export class FileFetcherService {
         return this.http.get(this.storyUrl, {
             params: { storyName }, 
         }).pipe(
-            tap((story) => { console.log("Story Fetched");}),
+            tap((story) => { console.log("Story Fetched"); }),
             catchError(this.handleError("fetchStory", []))
         );
     }
@@ -28,10 +28,11 @@ export class FileFetcherService {
         return this.http.get<string[]>(this.storyListUrl);
     }
 
-    fetchPoem(poemName: string): Observable<object> {
-        return this.http.get<object>(this.poemUrl, {
-            params: { poemName }
-        });
+    fetchPoems(): Observable<object> {
+        return this.http.get(this.poemUrl).pipe(
+            tap((poems) => { console.log("Poems Fetched"); }),
+            catchError(this.handleError("fetchPoems", []))
+        );
     }
 
     fetchPoemList(): Observable<string[]> {

@@ -14,7 +14,7 @@ router.use(function fetchWriting(req: Request, res: Response, next: NextFunction
 
 router.get("/story", function(req: Request, res: Response, next: NextFunction) {
     if (req.query.storyName) {
-        fs.readFile(helpers.root(`stories/${req.query.storyName}.htm`), "utf8", (err, data) => {
+        fs.readFile(helpers.root(`files/stories/${req.query.storyName}.htm`), "utf8", (err, data) => {
             if (err)
                 next(new Error("No file by that name was found."));
             
@@ -27,7 +27,7 @@ router.get("/story", function(req: Request, res: Response, next: NextFunction) {
 });
 
 router.get("/storyList", function(req: Request, res: Response, next: NextFunction) {
-    fs.readdir(helpers.root("stories"), "utf8", function(err, files) {
+    fs.readdir(helpers.root("files/stories"), "utf8", function(err, files) {
         if (err)
             next(new Error("An error occured tyring to fetch available stories"));
     
