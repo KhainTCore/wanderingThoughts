@@ -8,37 +8,25 @@ import { of } from "rxjs/observable/of";
 export class FileFetcherService {
 
     private fetFilesUrl = "api/fetchFiles";
-    private poemUrl = `${this.fetFilesUrl}/fetchPoems`;
-    private poemListUrl = `${this.fetFilesUrl}/poemList`;
-    private storyUrl = `${this.fetFilesUrl}/story`;
-    private storyListUrl = `${this.fetFilesUrl}/storyList`;
+    private fileListUrl = `${this.fetFilesUrl}/fileList`;
+    private fileUrl = `${this.fetFilesUrl}/file`;
 
     constructor(private http: HttpClient) { }
 
-    fetchStory(storyName: string): Observable<object> {
-        return this.http.get(this.storyUrl, {
-            params: { storyName }, 
+    fetchList(type: string): Observable<string[]> {
+        return this.http.get<string[]>(this.fileListUrl, {
+            params: { type }
+        });
+    }
+
+    fetchFile(type: string, title: string): Observable<object> {
+        return this.http.get(this.fileUrl, {
+            params: { type, title }, 
         }).pipe(
             tap((story) => { console.log("Story Fetched"); }),
             catchError(this.handleError("fetchStory", []))
         );
     }
-
-    fetchStoryList(): Observable<string[]> {
-        return this.http.get<string[]>(this.storyListUrl);
-    }
-
-    fetchPoems(): Observable<object> {
-        return this.http.get(this.poemUrl).pipe(
-            tap((poems) => { console.log("Poems Fetched"); }),
-            catchError(this.handleError("fetchPoems", []))
-        );
-    }
-
-    fetchPoemList(): Observable<string[]> {
-        return this.http.get<string[]>(this.poemListUrl);
-    }
-
 
     /**
      * Handle Http operation that failed.

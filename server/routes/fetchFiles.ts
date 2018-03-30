@@ -12,22 +12,26 @@ router.use(function fetchWriting(req: Request, res: Response, next: NextFunction
     next();
 });
 
-router.get("/story", function(req: Request, res: Response, next: NextFunction) {
-    if (req.query.storyName) {
-        fs.readFile(helpers.root(`files/stories/${req.query.storyName}.htm`), "utf8", (err, data) => {
+router.get("/file", function(req: Request, res: Response, next: NextFunction) {
+    let typeDir: string = getType(req.query.type);
+    
+    if (req.query.title) {
+        fs.readFile(helpers.root(`files/${typeDir}/${req.query.title}.htm`), "utf8", (err, data) => {
             if (err)
                 next(new Error("No file by that name was found."));
             
             let html: HtmlFile = new HtmlFile(data, data, true);
-            res.status(200).json({story: html});
+            res.status(200).json({file: html});
         });
     } else {
-        next(new Error("No story name was provided."));
+        next(new Error("No file name was provided."));
     }
 });
 
-router.get("/storyList", function(req: Request, res: Response, next: NextFunction) {
-    fs.readdir(helpers.root("files/stories"), "utf8", function(err, files) {
+router.get("/fileList", function(req: Request, res: Response, next: NextFunction) {
+    let typeDir: string = getType(req.query.type);
+
+    fs.readdir(helpers.root(`files/${typeDir}`), "utf8", function(err, files) {
         if (err)
             next(new Error("An error occured tyring to fetch available stories"));
     
@@ -44,13 +48,16 @@ router.get("/storyList", function(req: Request, res: Response, next: NextFunctio
     });
 });
 
-router.get("/poem", function(req: Request, res: Response, next: NextFunction) {
-    next(new Error("Not Implemented Yet"));
-});
-
-router.get("/poemList", function(req: Request, res: Response, next: NextFunction) {
-    next(new Error("Not Implemented Yet"));
-});
+function getType(type) {
+    switch (type) {
+        case "p":
+        case "poem":
+        case "poetry":
+            return "poetry";
+        default:
+            return "stories";
+    }
+}
 
 // Can't mix import and module.exports
 // Express requires module.exports, export will cause a typeError

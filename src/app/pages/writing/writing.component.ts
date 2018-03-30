@@ -21,6 +21,7 @@ export class WritingComponent implements OnInit {
     private file: Story = new Story("");
     private listHeaderCSS: object = {'font-weight': "bold", 'font-size.px': 24};
     private listIndent: number = 10;
+    private poetryList: Content[] = [new Content("Daily Practice Collection", 1)];
     private storyList: Content[] = [];
     private storyTitle: string = "No Story Selected";
     private storyTOC: Content[] = [];
@@ -28,21 +29,24 @@ export class WritingComponent implements OnInit {
     constructor(private fileFetcherService: FileFetcherService) { }
 
     ngOnInit() {
-        this.fileFetcherService.fetchStoryList().subscribe((list) => {
-            if (list.length > 0) {
-                this.storyList = [];
-                for (let name of list) {
-                    this.storyList.push(new Content(name, 1));
-                }            
+        this.fileFetcherService.fetchList("s").subscribe((list) => {
+            for (let name of list) {
+                this.storyList.push(new Content(name, 1));
+            }            
+        });
+
+        this.fileFetcherService.fetchList("p").subscribe((list) => {
+            for (let name of list) {
+                this.poetryList.push(new Content(name, 1));
             }
         });
     }
 
-    onSelected(content: Content) {
-        this.fileFetcherService.fetchStory(content.title)
-            .subscribe((file: {story: Story}) => {
-                this.file = file.story;
-                this.storyTitle = file.story.title || content.title;
+    onSelected(content: Content, type: string) {
+        this.fileFetcherService.fetchFile(type, content.title)
+            .subscribe((file: {file: Story}) => {
+                this.file = file.file;
+                this.storyTitle = file.file.title || content.title;
             });
     }
 }

@@ -1,14 +1,22 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="side" opened class="sidenav">
-        <table-of-contents [border]="false" [content]="storyList" (onSelected)="onSelected($event)" [indentSize]="listIndent" 
-            title="Stories">
-        </table-of-contents>
+        <div class="half-view">
+            <table-of-contents [border]="false" [content]="storyList" (onSelected)="onSelected($event, 's')" [indentSize]="listIndent" 
+                title="Stories">
+            </table-of-contents>
+        </div>
+        <div class="half-view">        
+            <table-of-contents [border]="false" [content]="poetryList" (onSelected)="onSelected($event, 'p')" [indentSize]="listIndent" 
+                title="Poetry">
+            </table-of-contents>
+        </div>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
         <mat-grid-list id="writing" cols="4" rowHeight="fit" class="full">
             <mat-grid-tile [colspan]="3" class="row-top left-align">
-                <text-viewer class="full row-top left-align" [(text)]="file" [title]="storyTitle"></text-viewer>
+                <text-viewer *ngIf="!poem" class="full row-top left-align" [text]="file" [title]="storyTitle"></text-viewer>
+                <text-viewer *ngIf="poem" class="full row-top" [text]="poem" [title]="poemTitle"></text-viewer>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" class="row-top right-align">
                 <table-of-contents [content]="storyTOC" title="Table of Contents"></table-of-contents>

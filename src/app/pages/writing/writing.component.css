@@ -3,6 +3,11 @@
     width: 100%;
 }
 
+.half-view {
+    height: 50%;
+    overflow: auto;
+}
+
 .row-top > ::ng-deep figure {
     align-items: flex-start !important;
 }
@@ -15,8 +20,11 @@
     justify-content: right !important;
 }
 
+.row-md {
+    overflow: auto;
+}
+
 .sidenav {
-    display: flex;
     width: 15vw;
 }
 
