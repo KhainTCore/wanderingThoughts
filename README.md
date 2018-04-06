@@ -4,16 +4,23 @@ The name makes no sense? Of course it doesn't, it is just a random string of wor
 
 ## TODO (Tasks)
 
-* Need to fetch a list of available files from the backend.
-... Probably need to create a map for simplicities sake, rather than sending complex strings to the backend for the action.
-* Need to figure out how to parse out titles and Section headers for the TOC
-* Need to add a description area to the TextViewer Component
-... Might be nice for it to be toggleable. We'll see. Got to keep that page clutter down
-* Need to creat a Card View textViewer, would be nice for simple poetry and the likes
-* Simple Chat feature for home page - non-persistent
-* A how-do-yah-do for the home page as well. Got to explain what the site is.
-* Need to figure out how to keep the front-end routing from not fetching on inital load.
+* Abstract Button Menu into its own Feature Component/Module
+* Use it to also create a style shifter for textViewer
+* Create coherent custom themes for the site
+* Hide TOC when there are no major breakpoints in the currently viewed document
+* Clean up and finish the site footer 
+    
+    Unfixed, but will appear static on pages like writing
+* Description area for textViewer/Writing Page
+* Abstract and clean up the CSS for components, it's all over the place right now
+* Link to Tree's dA page/insta
+* Import Home Page bio/info from a README instead of nesting in the HTML
 
 ## Future Features
 
 Nothing, because we aren't even at 1.0.0 yet!!!!
+
+### Unimportant stuff
+
+* Create simple non-persistent chat (socket.io)
+* CardView to completement TextView but for simpler and smaller things

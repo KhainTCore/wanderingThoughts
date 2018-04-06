@@ -7,6 +7,7 @@ module.exports = {
   entry: { // Entry point files that define the bundles
     'polyfills': './config/polyfills.ts',
     'vendor': './config/vendor.ts',
+    'themes': './config/themes.ts',
     'app': './src/main.ts'
   },
 
@@ -34,9 +35,23 @@ module.exports = {
         loader: 'file-loader?name=assets/[name].[hash].[ext]'
       },
       {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            { loader: "css-loader" }, 
+            {
+              loader: 'sass-loader',
+              options: {
+                  sourceMap: true
+              }
+          }]
+        })
+      },
+      {
         test: /\.css$/, // Aplication wide styles
         exclude: helpers.root('src/app'),
-        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?sourceMap'] })
       },
       {
         test: /\.css$/, // Component scoped styles
@@ -47,6 +62,7 @@ module.exports = {
   },
 
   plugins: [
+    new ExtractTextPlugin("style.css"),
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows

@@ -12,6 +12,3 @@ import "rxjs";
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
-
-// Angular CSS
-import "@angular/material/prebuilt-themes/purple-green.css";

@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+$forest-light-primary: mat-palette($mat-green);
+$forest-light-accent: mat-palette($mat-brown, A200, A100, A400);
+
+$forest-light-warn: mat-palette($mat-red);
+
+$forest-light-theme: mat-light-theme($forest-light-primary, $forest-light-accent, $forest-light-warn);
+
+.forest-light {
+    @include angular-material-theme($forest-light-theme);    
+}
