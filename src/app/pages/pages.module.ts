@@ -6,16 +6,21 @@ import {
     } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { CodeComponent, HomeComponent, PageNotFoundComponent, WritingComponent } from ".";
+import { 
+    BlogComponent, CodeComponent, HomeComponent, PageNotFoundComponent, 
+    PhotographyComponent, WritingComponent 
+} from ".";
 
 import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
     declarations: [
-        CodeComponent, HomeComponent, PageNotFoundComponent, WritingComponent
+        BlogComponent, CodeComponent, HomeComponent, PageNotFoundComponent, 
+        PhotographyComponent, WritingComponent
     ],
     exports: [
-        CodeComponent, HomeComponent, PageNotFoundComponent, WritingComponent
+        BlogComponent, CodeComponent, HomeComponent, PageNotFoundComponent,
+        PhotographyComponent, WritingComponent
     ],
     imports: [
         CommonModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatDividerModule, 

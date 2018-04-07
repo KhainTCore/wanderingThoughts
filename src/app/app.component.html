@@ -7,8 +7,14 @@
             <button mat-button class="pageLink" routerLink="/writing" routerLinkActive="active">
                 Writing
             </button>
-            <button mat-button class="pageLink">
+            <button mat-button class="pageLink" routerLink="/code" routerLinkActive="active">
                 Code
+            </button>
+            <button mat-button class="pageLink" routerLink="/photography" routerLinkActive="active">
+                Photography
+            </button>
+            <button mat-button class="pageLink" routerLink="/blog" routerLinkActive="active">
+                Blog
             </button>
             <span class="filler"></span>
             <button mat-button color="accent" [matMenuTriggerFor]="menu">
@@ -40,7 +46,7 @@
             </mat-menu>
         </mat-toolbar-row>
     </mat-toolbar>
-    <div class="mat-app-background full">
+    <div class="mat-app-background view-port">
         <router-outlet></router-outlet>
     </div>
 </div>
