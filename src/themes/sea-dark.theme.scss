@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+$sea-dark-primary: mat-palette($mat-light-blue);
+$sea-dark-accent: mat-palette($mat-teal, A200, A100, A400);
+
+$sea-dark-warn: mat-palette($mat-red);
+
+$sea-dark-theme: mat-dark-theme($sea-dark-primary, $sea-dark-accent, $sea-dark-warn);
+
+.sea-dark {
+    @include angular-material-theme($sea-dark-theme);    
+}

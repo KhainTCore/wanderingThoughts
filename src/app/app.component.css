@@ -14,15 +14,6 @@
     flex-grow: 1;
 }
 
-.full {
-    bottom: 0px;
-    position: fixed;
-    left: 0px;
-    right: 0px;
-    top: 64px;
-    width: 100%
-}
-
 .home {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 150%;
@@ -31,4 +22,30 @@
 .pageLink {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 100%
+}
+
+.view-port {
+    bottom: 0px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 64px;
+    width: 100%
+}
+
+/* https://css-tricks.com/almanac/properties/s/scrollbar/ */
+/* The Background, usually covered by other elements */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* The empty space below the progress bar */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+/* The draggable progress element */
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
