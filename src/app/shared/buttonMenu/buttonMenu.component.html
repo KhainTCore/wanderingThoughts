@@ -1,0 +1,9 @@
+<button mat-button [color]="color" [matMenuTriggerFor]="menu">
+    {{title}}
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let item of menuItems" (click)="select(item)">
+        <mat-icon [ngStyle]="item.style" *ngIf="item.icon" [svgIcon]="item.icon"></mat-icon>
+        <span *ngIf="item.displayValue" [ngStyle]="item.style">{{item.displayValue}}</span>
+    </button>
+</mat-menu>

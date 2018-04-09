@@ -17,33 +17,7 @@
                 Blog
             </button>
             <span class="filler"></span>
-            <button mat-button color="accent" [matMenuTriggerFor]="menu">
-                Themes
-            </button>
-            <mat-menu #menu="matMenu">
-                <mat-grid-list cols="2" rowHeight="100px" style="min-width:145px">
-                    <mat-grid-tile colspan="1">
-                        <button mat-menu-item (click)="setTheme('forest-dark')">
-                            <mat-icon style="color: #8BC34A;">brush</mat-icon>                
-                        </button>
-                    </mat-grid-tile>
-                    <mat-grid-tile colspan="1">
-                        <button mat-menu-item (click)="setTheme('forest-light')">
-                            <mat-icon style="color: #F1F8E9;">brush</mat-icon>                                
-                        </button>                    
-                    </mat-grid-tile>
-                    <mat-grid-tile colspan="1">
-                        <button mat-menu-item (click)="setTheme('sea-dark')">
-                            <mat-icon style="color: #00BCD4;">brush</mat-icon>                            
-                        </button>                    
-                    </mat-grid-tile>
-                    <mat-grid-tile colspan="1">
-                        <button mat-menu-item (click)="setTheme('sea-light')">
-                            <mat-icon style="color: #E0F7FA;">brush</mat-icon>
-                        </button>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </mat-menu>
+            <button-menu [menuItems]="themeMenu" (onSelected)="setTheme($event)" title="Themes"></button-menu>
         </mat-toolbar-row>
     </mat-toolbar>
     <div class="mat-app-background view-port">
