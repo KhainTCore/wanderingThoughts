@@ -8,10 +8,11 @@ import { CoreModule } from './core';
 import { PagesModule } from "./pages/pages.module";
 
 import { AppComponent } from './app.component';
+import { ButtonMenuModule } from "./shared/buttonMenu/buttonMenu.module";
 
 @NgModule({
   imports: [
-    BrowserModule, AppRoutingModule, CoreModule, HttpClientModule, MatButtonModule,
+    BrowserModule, AppRoutingModule, CoreModule, ButtonMenuModule, HttpClientModule, MatButtonModule,
     MatGridListModule, MatIconModule, MatMenuModule, MatToolbarModule, PagesModule
   ],
   declarations: [
