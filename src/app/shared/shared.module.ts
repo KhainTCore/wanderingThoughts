@@ -1,18 +1,20 @@
 import { NgModule } from "@angular/core";
-import { MatDividerModule } from "@angular/material";
-
-import { TableOfContentsComponent, TextViewerComponent } from ".";
 import { CommonModule } from "@angular/common";
+
+import { CardViewerModule } from "./cardViewer/cardViewer.module";
+import { TableOfContentsModule } from "./tableOfContents/tableOfContents.module";
+import { TextViewerModule } from "./textViewer/textViewer.module";
+import { ButtonMenuModule } from "./buttonMenu/buttonMenu.module";
 
 @NgModule({
     declarations: [
-        TableOfContentsComponent, TextViewerComponent
+        
     ],
     exports: [
-        TableOfContentsComponent, TextViewerComponent
+        ButtonMenuModule, CardViewerModule, TableOfContentsModule, TextViewerModule
     ],
     imports: [
-        CommonModule, MatDividerModule
+        ButtonMenuModule, CommonModule, CardViewerModule, TableOfContentsModule
     ]
 })
 
