@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { FileFetcherService } from "../../core/fileFetcher.service";
 import { Content, Story } from "../../shared";
+import { MenuItem } from "../../shared/buttonMenu/buttonMenu.component";
 
 @Component({
     selector: "writing",
@@ -18,13 +19,24 @@ import { Content, Story } from "../../shared";
  */
 export class WritingComponent implements OnInit {
 
+    private alignmentMenu: MenuItem[] = [
+        new MenuItem(1, "Left", null, null, "l"),
+        new MenuItem(1, "Center", null, null, "c"),
+        new MenuItem(1, "Right", null, null, "r")
+    ];
     private file: Story = new Story("");
+    private fileTitle: string = "No Story Selected";
     private listHeaderCSS: object = {'font-weight': "bold", 'font-size.px': 24};
     private listIndent: number = 10;
+    private textViewerStyle: any = {margin: "0 20% 0 20%", "text-align": "left"};
+    private marginMenu: MenuItem[] = [
+        new MenuItem(1, "Small", null, null, "s"),
+        new MenuItem(1, "Medium", null, null, "m"),
+        new MenuItem(1, "Large", null, null, "l")
+    ];
     private poetryList: Content[] = [new Content("Daily Practice Collection", 1)];
     private storyList: Content[] = [];
-    private storyTitle: string = "No Story Selected";
-    private storyTOC: Content[] = [];
+    private tableOfContents: Content[] = [];
 
     constructor(private fileFetcherService: FileFetcherService) { }
 
@@ -46,7 +58,35 @@ export class WritingComponent implements OnInit {
         this.fileFetcherService.fetchFile(type, content.title)
             .subscribe((file: {file: Story}) => {
                 this.file = file.file;
-                this.storyTitle = file.file.title || content.title;
+                this.fileTitle = file.file.title || content.title;
             });
+    }
+
+    setMargins(margin: string) {
+        switch (margin) {
+            case "s":
+                this.textViewerStyle.margin = "0 10% 0 10%";
+                break;
+            case "m":
+                this.textViewerStyle.margin = "0 20% 0 20%";
+                break;
+            case "l":
+            default:
+                this.textViewerStyle.margin = "0 30% 0 30%";
+        }
+    }
+
+    setAlignment(align: string) {
+        switch (align) {
+            case "c":
+                this.textViewerStyle["text-align"] = "center";
+                break;
+            case "r":
+                this.textViewerStyle["text-align"] = "right";
+                break;
+            case "l":
+            default:
+                this.textViewerStyle["text-align"] = "left";
+        }
     }
 }

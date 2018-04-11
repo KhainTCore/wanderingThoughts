@@ -14,12 +14,13 @@
 
     <mat-sidenav-content class="sidenav-content">
         <mat-grid-list id="writing" cols="4" rowHeight="fit" class="full">
-            <mat-grid-tile [colspan]="3" class="row-top left-align">
-                <text-viewer *ngIf="!poem" class="full row-top left-align" [text]="file" [title]="storyTitle"></text-viewer>
-                <text-viewer *ngIf="poem" class="full row-top" [text]="poem" [title]="poemTitle"></text-viewer>
+            <mat-grid-tile colspan="3" class="row-top left-align">
+                <text-viewer class="full row-top left-align" [style]="textViewerStyle" [text]="file" [title]="fileTitle"></text-viewer>
             </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" class="row-top right-align">
-                <table-of-contents [content]="storyTOC" title="Table of Contents"></table-of-contents>
+            <mat-grid-tile colspan="1" class="row-top">
+                <button-menu class="marginMenu" buttonStyle="r" [menuItems]="marginMenu" (onSelected)="setMargins($event)" title="Margins"></button-menu>            
+                <button-menu class="marginMenu" buttonStyle="r" [menuItems]="alignmentMenu" (onSelected)="setAlignment($event)" title="Alignment"></button-menu>
+                <table-of-contents [content]="tableOfContents" title="Table of Contents" *ngIf="tableOfContents.length !== 0"></table-of-contents>
             </mat-grid-tile>
         </mat-grid-list>
     </mat-sidenav-content>

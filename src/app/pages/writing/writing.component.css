@@ -8,6 +8,10 @@
     overflow: auto;
 }
 
+.marginMenu {
+    margin-top: 1.34em;
+}
+
 .row-top > ::ng-deep figure {
     align-items: flex-start !important;
 }
