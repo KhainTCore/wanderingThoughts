@@ -8,6 +8,7 @@ module.exports = {
     'polyfills': './config/polyfills.ts',
     'vendor': './config/vendor.ts',
     'themes': './config/themes.ts',
+    'icon-set': './config/icon-set.ts',
     'app': './src/main.ts'
   },
 
@@ -32,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, // Images and Fonts
-        loader: 'file-loader?name=assets/[name].[hash].[ext]'
+        loader: 'file-loader?name=assets/[name].[ext]'
       },
       {
         test: /\.scss$/,

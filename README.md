@@ -4,16 +4,11 @@ The name makes no sense? Of course it doesn't, it is just a random string of wor
 
 ## TODO (Tasks)
 
-* Abstract Button Menu into its own Feature Component/Module
-* Use it to also create a style shifter for textViewer
 * Create coherent custom themes for the site
-* Hide TOC when there are no major breakpoints in the currently viewed document
-* Clean up and finish the site footer 
     
-    Unfixed, but will appear static on pages like writing
+    make more complex and comprehensive themse
 * Description area for textViewer/Writing Page
 * Abstract and clean up the CSS for components, it's all over the place right now
-* Link to Tree's dA page/insta
 * Import Home Page bio/info from a README instead of nesting in the HTML
 
 ## Future Features
