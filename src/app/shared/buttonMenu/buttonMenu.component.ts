@@ -8,6 +8,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from "@angular/core";
 
 export class ButtonMenuComponent implements OnInit {
 
+    @Input() buttonStyle: string = "b";
     @Input() color: string = "accent";
     @Input() menuItems: MenuItem[] = [];
     @Input() title: string = "Menu";

@@ -1,4 +1,7 @@
-<button mat-button [color]="color" [matMenuTriggerFor]="menu">
+<button mat-button [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'b'">
+    {{title}}
+</button>
+<button mat-raised-button [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'r'">
     {{title}}
 </button>
 <mat-menu #menu="matMenu">
