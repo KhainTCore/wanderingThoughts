@@ -1,6 +1,13 @@
-.full {
-    height: 100%;
-    width: 100%;
+.center {
+    text-align: center;
+}
+
+.cols {
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
 }
 
 .half-view {
@@ -8,25 +15,22 @@
     overflow: auto;
 }
 
-.marginMenu {
-    margin-top: 1.34em;
+.tall {
+    height: 100%;
 }
 
-.row-top > ::ng-deep figure {
-    align-items: flex-start !important;
+.padding-top-sm {
+    padding-top: 5px;
 }
 
-.left-align > ::ng-deep figure {
-    justify-content: left !important;
+.bottom-pd-sm {
+    padding-bottom: 5px;
 }
 
-.right-align > ::ng-deep figure {
-    justify-content: right !important;
-}
-
-.row-md {
-    overflow: auto;
-}
+ .text-viewer {
+     width: 75%;
+     height: 100%;
+ }
 
 .sidenav {
     width: 15vw;
@@ -42,5 +46,6 @@
 
 .sidenav-content {
     margin-left: 16vw !important;
-    width: 85vw;
+    margin-right: 1vw !important;
+    width: 83vw;
 }

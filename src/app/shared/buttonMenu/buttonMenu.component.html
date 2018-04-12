@@ -4,6 +4,9 @@
 <button mat-raised-button [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'r'">
     {{title}}
 </button>
+<button mat-fab [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'f'">
+    {{title}}
+</button>
 <mat-menu #menu="matMenu">
     <button mat-menu-item *ngFor="let item of menuItems" (click)="select(item)">
         <mat-icon [ngStyle]="item.style" *ngIf="item.icon" [svgIcon]="item.icon"></mat-icon>

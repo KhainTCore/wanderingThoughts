@@ -10,6 +10,7 @@ import { Story } from "../";
 
 export class TextViewerComponent {
 
+    @Input() noTitle: boolean = false;
     @Input() text: Story = new Story("");
     @Input() title: string = "Title";
     @Input() style: object;

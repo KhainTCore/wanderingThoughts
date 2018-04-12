@@ -28,7 +28,7 @@ export class WritingComponent implements OnInit {
     private fileTitle: string = "No Story Selected";
     private listHeaderCSS: object = {'font-weight': "bold", 'font-size.px': 24};
     private listIndent: number = 10;
-    private textViewerStyle: any = {margin: "0 20% 0 20%", "text-align": "left"};
+    private textViewerStyle: any = {margin: "auto 20% auto 20%", "text-align": "left"};
     private marginMenu: MenuItem[] = [
         new MenuItem(1, "Small", null, null, "s"),
         new MenuItem(1, "Medium", null, null, "m"),
@@ -65,14 +65,14 @@ export class WritingComponent implements OnInit {
     setMargins(margin: string) {
         switch (margin) {
             case "s":
-                this.textViewerStyle.margin = "0 10% 0 10%";
+                this.textViewerStyle.margin = "auto 10% auto 10%";
                 break;
             case "m":
-                this.textViewerStyle.margin = "0 20% 0 20%";
+                this.textViewerStyle.margin = "auto 20% auto 20%";
                 break;
             case "l":
             default:
-                this.textViewerStyle.margin = "0 30% 0 30%";
+                this.textViewerStyle.margin = "auto 30% auto 30%";
         }
     }
 

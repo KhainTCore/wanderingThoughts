@@ -13,15 +13,17 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
-        <mat-grid-list id="writing" cols="4" rowHeight="fit" class="full">
-            <mat-grid-tile colspan="3" class="row-top left-align">
-                <text-viewer class="full row-top left-align" [style]="textViewerStyle" [text]="file" [title]="fileTitle"></text-viewer>
-            </mat-grid-tile>
-            <mat-grid-tile colspan="1" class="row-top">
-                <button-menu class="marginMenu" buttonStyle="r" [menuItems]="marginMenu" (onSelected)="setMargins($event)" title="Margins"></button-menu>            
-                <button-menu class="marginMenu" buttonStyle="r" [menuItems]="alignmentMenu" (onSelected)="setAlignment($event)" title="Alignment"></button-menu>
-                <table-of-contents [content]="tableOfContents" title="Table of Contents" *ngIf="tableOfContents.length !== 0"></table-of-contents>
-            </mat-grid-tile>
-        </mat-grid-list>
+        <div class="container cols tall">
+                <h1 class="center">{{fileTitle}}</h1>
+                <mat-divider></mat-divider>
+                <div class="container padding-top-sm tall">
+                    <div class="container cols">
+                        <button-menu class="bottom-pd-sm" buttonStyle="f" [menuItems]="marginMenu" (onSelected)="setMargins($event)" title="Margins"></button-menu>            
+                        <button-menu class="bottom-pd-sm" buttonStyle="f" [menuItems]="alignmentMenu" (onSelected)="setAlignment($event)" title="Align"></button-menu>
+                    </div>
+                    <text-viewer class="text-viewer" [style]="textViewerStyle" [text]="file" noTitle="true"></text-viewer>
+                    <table-of-contents [content]="tableOfContents" title="Table of Contents" ></table-of-contents>            
+                </div>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

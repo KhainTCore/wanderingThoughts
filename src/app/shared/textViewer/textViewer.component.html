@@ -1,6 +1,10 @@
-<h1 id="title" class="center">{{text.title || title}}</h1>
-<mat-divider></mat-divider>
 <div class="container">
-    <div id="body" class="box text-body" [ngStyle]="style" [innerHtml]="text.body"></div>
+    <div *ngIf="!noTitle">
+        <h1 id="title" class="center">{{text.title || title}}</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div id="top"></div>
+    <div id="body" class="box margin-top-sm" [ngStyle]="style" [innerHtml]="text.body"></div>
     <div id="bottom"></div>
+
 </div>
