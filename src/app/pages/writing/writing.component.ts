@@ -64,7 +64,7 @@ export class WritingComponent implements OnInit {
     setMargins(margin: string) {
         switch (margin) {
             case "s":
-                this.textViewerStyle.margin = "auto 15% auto 24px";
+                this.textViewerStyle.margin = "auto 20% auto 24px";
                 break;
             case "m":
                 this.textViewerStyle.margin = "auto 30% auto 24px";
