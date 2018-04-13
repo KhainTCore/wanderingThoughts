@@ -1,8 +1,5 @@
-.active {
-    background-color: #a277b5;
-}
-
 .banner {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
     height: 64px;
     position: fixed;
     left: 0px;
