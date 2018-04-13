@@ -1,14 +1,14 @@
 <div class="row">
     <div class="left-col" *ngIf="border" [ngStyle]="{'background-color': borderColour}"></div>
     <div class="right-col">
-        <h1 class="header">{{title}}</h1>
+        <h1 class="header" *ngIf="title">{{title}}</h1>
         <ul>
             <li *ngFor="let link of content" [ngStyle]="{'padding-left.px': link.level * indentSize}">
-                <a *ngIf="link.target" [href]="link.target">
+                <a *ngIf="link.target" class="white-text" [href]="link.target">
                     {{link.title}}
                 </a>
 
-                <button *ngIf="!link.target" class="button-link" (click)="select(link)" [disabled]="disableLinks">
+                <button *ngIf="!link.target" class="button-link white-text" (click)="select(link)" [disabled]="disableLinks">
                     {{link.title}}
                 </button>
             </li>
