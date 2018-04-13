@@ -10,9 +10,13 @@
     display: flex;
 }
 
-.half-view {
-    height: 50%;
-    overflow: auto;
+.float {
+    position: absolute;
+    right: 8px;
+}
+
+.toc {
+    margin-right: 40px;
 }
 
 .tall {
@@ -28,7 +32,7 @@
 }
 
  .text-viewer {
-     width: 75%;
+     width: 100%;
      height: 100%;
  }
 
@@ -48,4 +52,9 @@
     margin-left: 16vw !important;
     margin-right: 1vw !important;
     width: 83vw;
+}
+
+.sidenav-title {
+    font-size: 16px;
+    font-weight: 600;
 }

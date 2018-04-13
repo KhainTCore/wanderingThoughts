@@ -26,15 +26,14 @@ export class WritingComponent implements OnInit {
     ];
     private file: Story = new Story("");
     private fileTitle: string = "No Story Selected";
-    private listHeaderCSS: object = {'font-weight': "bold", 'font-size.px': 24};
     private listIndent: number = 10;
-    private textViewerStyle: any = {margin: "auto 20% auto 20%", "text-align": "left"};
+    private textViewerStyle: any = {margin: "auto 30% auto 24px", "text-align": "left"};
     private marginMenu: MenuItem[] = [
         new MenuItem(1, "Small", null, null, "s"),
         new MenuItem(1, "Medium", null, null, "m"),
         new MenuItem(1, "Large", null, null, "l")
     ];
-    private poetryList: Content[] = [new Content("Daily Practice Collection", 1)];
+    private poetryList: Content[] = [];
     private storyList: Content[] = [];
     private tableOfContents: Content[] = [];
 
@@ -65,14 +64,14 @@ export class WritingComponent implements OnInit {
     setMargins(margin: string) {
         switch (margin) {
             case "s":
-                this.textViewerStyle.margin = "auto 10% auto 10%";
+                this.textViewerStyle.margin = "auto 15% auto 24px";
                 break;
             case "m":
-                this.textViewerStyle.margin = "auto 20% auto 20%";
+                this.textViewerStyle.margin = "auto 30% auto 24px";
                 break;
             case "l":
             default:
-                this.textViewerStyle.margin = "auto 30% auto 30%";
+                this.textViewerStyle.margin = "auto 45% auto 24px";
         }
     }
 

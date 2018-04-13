@@ -1,29 +1,54 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav mode="side" opened class="sidenav">
-        <div class="half-view">
-            <table-of-contents [border]="false" [content]="storyList" (onSelected)="onSelected($event, 's')" [indentSize]="listIndent" 
-                title="Stories">
-            </table-of-contents>
-        </div>
-        <div class="half-view">        
-            <table-of-contents [border]="false" [content]="poetryList" (onSelected)="onSelected($event, 'p')" [indentSize]="listIndent" 
-                title="Poetry">
-            </table-of-contents>
-        </div>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="sidenav-title">
+                        Stories
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table-of-contents [border]="false" [content]="storyList" (onSelected)="onSelected($event, 's')">
+                </table-of-contents>    
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="sidenav-title">
+                        Poetry
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table-of-contents [border]="false" [content]="poetryList" (onSelected)="onSelected($event, 'p')">
+                </table-of-contents>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="sidenav-title">
+                        Essays
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <!-- <table-of-contents [border]="false" [content]="poetryList" (onSelected)="onSelected($event, 'p')">
+                </table-of-contents> -->
+            </mat-expansion-panel>
+        </mat-accordion>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
         <div class="container cols tall">
-                <h1 class="center">{{fileTitle}}</h1>
-                <mat-divider></mat-divider>
-                <div class="container padding-top-sm tall">
-                    <div class="container cols">
-                        <button-menu class="bottom-pd-sm" buttonStyle="f" [menuItems]="marginMenu" (onSelected)="setMargins($event)" title="Margins"></button-menu>            
-                        <button-menu class="bottom-pd-sm" buttonStyle="f" [menuItems]="alignmentMenu" (onSelected)="setAlignment($event)" title="Align"></button-menu>
-                    </div>
-                    <text-viewer class="text-viewer" [style]="textViewerStyle" [text]="file" noTitle="true"></text-viewer>
-                    <table-of-contents [content]="tableOfContents" title="Table of Contents" ></table-of-contents>            
+            <h1 class="center">{{fileTitle}}</h1>
+            <mat-divider></mat-divider>
+            <div class="container padding-top-sm tall">
+                <div class="container cols">
+                    <button-menu class="bottom-pd-sm" buttonStyle="f" color="accent" [menuItems]="marginMenu" 
+                        (onSelected)="setMargins($event)" title="Margins">
+                    </button-menu>            
+                    <button-menu class="bottom-pd-sm" buttonStyle="f" color="accent" [menuItems]="alignmentMenu" 
+                        (onSelected)="setAlignment($event)" title="Align">
+                    </button-menu>
                 </div>
+                <text-viewer class="text-viewer" [style]="textViewerStyle" [text]="file" noTitle="true"></text-viewer>
+                <table-of-contents class="float toc" [content]="tableOfContents" title="Table of Contents" ></table-of-contents>            
+            </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

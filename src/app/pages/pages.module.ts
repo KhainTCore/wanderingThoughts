@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { 
-        MatCardModule, MatDividerModule, MatGridListModule, MatSidenavModule, MatToolbarModule 
+        MatCardModule, MatDividerModule, MatGridListModule, MatSidenavModule, MatToolbarModule, MatExpansionModule 
     } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -24,7 +24,7 @@ import { SharedModule } from "../shared/shared.module";
     ],
     imports: [
         CommonModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatDividerModule, 
-        MatGridListModule, MatSidenavModule, MatToolbarModule, SharedModule
+        MatExpansionModule, MatGridListModule, MatSidenavModule, MatToolbarModule, SharedModule
     ]
 })
 
