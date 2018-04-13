@@ -11,3 +11,7 @@ $sea-light-theme: mat-light-theme($sea-light-primary, $sea-light-accent, $sea-li
 .sea-light {
     @include angular-material-theme($sea-light-theme);    
 }
+
+.sea-light .active {
+    background-color: mat-color($sea-light-accent) !important;
+}

@@ -11,3 +11,7 @@ $forest-light-theme: mat-light-theme($forest-light-primary, $forest-light-accent
 .forest-light {
     @include angular-material-theme($forest-light-theme);    
 }
+
+.forest-light .active {
+    background-color: mat-color($forest-light-accent) !important;
+}

@@ -10,8 +10,8 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://www.google.com/design/spec/style/color.html
 
-$forest-dark-primary: mat-palette($mat-green);
-$forest-dark-accent: mat-palette($mat-brown, A200, A100, A400);
+$forest-dark-primary: mat-palette($mat-green, 500, 300, 700);
+$forest-dark-accent: mat-palette($mat-brown, 500, 300, 700);
 
 // The warn palette is optional (defaults to red).
 $forest-dark-warn: mat-palette($mat-red);
@@ -24,4 +24,12 @@ $forest-dark-theme: mat-dark-theme($forest-dark-primary, $forest-dark-accent, $f
 // that you are using.
 .forest-dark {
     @include angular-material-theme($forest-dark-theme);    
+}
+
+.forest-dark .active {
+    background-color: mat-color($forest-dark-accent) !important;
+}
+
+.forest-dark .white-text {
+    color: white !important;
 }

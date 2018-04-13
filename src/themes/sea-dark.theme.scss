@@ -11,3 +11,11 @@ $sea-dark-theme: mat-dark-theme($sea-dark-primary, $sea-dark-accent, $sea-dark-w
 .sea-dark {
     @include angular-material-theme($sea-dark-theme);    
 }
+
+.sea-dark .active {
+    background-color: mat-color($sea-dark-accent) !important;
+}
+
+.sea-dark .white-text {
+    color: white !important;
+}
