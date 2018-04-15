@@ -33,3 +33,7 @@ $forest-dark-theme: mat-dark-theme($forest-dark-primary, $forest-dark-accent, $f
 .forest-dark .white-text {
     color: white !important;
 }
+
+.forest-dark .mat-snack-bar-container {
+    background: mat-color($forest-dark-accent) !important;
+}
