@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { FileFetcherService } from "../../core/fileFetcher.service";
-import { Content, Story } from "../../shared";
+import { Content, HtmlFile } from "../../shared";
 import { MenuItem } from "../../shared/buttonMenu/buttonMenu.component";
 
 @Component({
@@ -24,7 +24,7 @@ export class WritingComponent implements OnInit {
         new MenuItem(1, "Center", null, null, "c"),
         new MenuItem(1, "Right", null, null, "r")
     ];
-    private file: Story = new Story("");
+    private file: HtmlFile = new HtmlFile("");
     private fileTitle: string = "No Story Selected";
     private listIndent: number = 10;
     private textViewerStyle: any = {margin: "auto 30% auto 24px", "text-align": "left"};
@@ -42,20 +42,21 @@ export class WritingComponent implements OnInit {
     ngOnInit() {
         this.fileFetcherService.fetchList("s").subscribe((list) => {
             for (let name of list) {
-                this.storyList.push(new Content(name, 1));
+                this.storyList.push(new Content(name, 0));
             }            
+            this.storyList.push(new Content("Doesn't Exist", 0));
         });
 
         this.fileFetcherService.fetchList("p").subscribe((list) => {
             for (let name of list) {
-                this.poetryList.push(new Content(name, 1));
+                this.poetryList.push(new Content(name, 0));
             }
         });
     }
 
     onSelected(content: Content, type: string) {
         this.fileFetcherService.fetchFile(type, content.title)
-            .subscribe((file: {file: Story}) => {
+            .subscribe((file: {file: HtmlFile}) => {
                 this.file = file.file;
                 this.fileTitle = file.file.title || content.title;
             });

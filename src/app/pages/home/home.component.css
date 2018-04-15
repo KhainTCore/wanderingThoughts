@@ -1,3 +1,8 @@
+.center-md {
+    text-align: center;
+    width: 50%;
+}
+
 .full {
     align-items: center;
     display: flex;

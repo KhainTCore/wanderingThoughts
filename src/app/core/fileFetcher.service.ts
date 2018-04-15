@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
+import { MatSnackBar } from "@angular/material";
 
 @Injectable()
 export class FileFetcherService {
@@ -10,8 +11,9 @@ export class FileFetcherService {
     private fetFilesUrl = "api/fetchFiles";
     private fileListUrl = `${this.fetFilesUrl}/fileList`;
     private fileUrl = `${this.fetFilesUrl}/file`;
+    private staticUrl = `${this.fetFilesUrl}/staticFiles`;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
 
     fetchList(type: string): Observable<string[]> {
         return this.http.get<string[]>(this.fileListUrl, {
@@ -23,9 +25,20 @@ export class FileFetcherService {
         return this.http.get(this.fileUrl, {
             params: { type, title }, 
         }).pipe(
-            tap((story) => { console.log("Story Fetched"); }),
-            catchError(this.handleError("fetchStory", []))
+            tap((story) => { this.log("Story Fetched", null, 4000); }),
+            catchError(this.handleError("Fetch File", {file: {}}))
         );
+    }
+
+    fetchStaticPage(page: string): Observable<object> {
+        return this.http.get(this.staticUrl, {params: {page, type: "st"}}).pipe(
+            tap((html) => { this.log(`Static HTML fetched for Home Page`, null, 4000); }),
+            catchError(this.handleError("Fetch Page Information", {file: {}}))
+        );
+    }
+
+    private log(msg: string, actions?: string, duration?: number): void {
+        this.snackBar.open(msg, actions, {duration});
     }
 
     /**
@@ -38,10 +51,13 @@ export class FileFetcherService {
         return (error: any): Observable<T> => {
     
         // TODO: send the error to remote logging infrastructure
-        console.error(error); // log to console instead
+        // console.error(error); // log to console instead
     
-        // TODO: better job of transforming error for user consumption
-        console.log(`${operation} failed: ${error.message}`);
+        this.log(
+            `${operation} failed: ${error.error ? error.error.message : "500 - Internal Server Error"}`,
+            "Dismiss",
+            0
+        );
     
         // Let the app keep running by returning an empty result.
         return of(result as T);

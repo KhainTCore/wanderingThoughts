@@ -4,21 +4,23 @@
     <a href="https://eriume.deviantart.com/" target="_blank" class="white-text">
         Me by eriume, a.k.a distar, a.k.a G of a Thousand Names
     </a>
-    <p>
-        This webiste is really more of an expression of hobbies, than anything else. Each
-        pag is dedicated to specific hobby of mine, from writing and coding to photography.
-        Even Wandering Thoughts itself is code I've written, as a means of experimentation adventure
-        centralizing where I put everything (Side note, all my code is open source, so if you want to
-        use any of it, feel free).
-    </p> 
-    <mat-divider class="page-padding-sm"></mat-divider>
-    <h2>Note</h2>
-    <p>
-        Everthing is still fairly beta, sitting at version 0.1. If you find any bugs or have suggestions
-        for improvement please shoot on over to the github page (link in the footer), and make an issue.
-        ... I'm out of words at the moment, so feel free to explore - and thanks for spending some time
-        with me.
-    </p>   
+    <div class="center-md">
+        <div *ngFor="let tag of content">
+            <div *ngIf="tag !== 'mat-divider'" [innerHtml]="tag"></div>
+            <mat-divider *ngIf="tag === 'mat-divider'"></mat-divider>
+        </div>
+    </div>
+    <div class="center-md" *ngIf="!content">
+        <h1>Alternate Introduction</h1>
+        <p>
+            First off - "Hello". Ok, now that curtousy has been covered, I apologize. I have a pretty entertaining (self-described)
+            introduction, but it seems that the words have gone missing! Rather then nest it in the page, I created a markdown filler
+            that gets fetched on loading of the page and then displayed out. Either that file is missing (Not my fault... I hope), or
+            there was a network error.
+            Either way, thanks for visiting. If you have any questions or concerns, feel free to hit up the github page and raise an
+            issue. Hopefully next time the everything loads up smooth.
+        </p>
+    </div>
     <mat-toolbar color="primary" class="footer">
         <mat-toolbar-row>
             <p class="normal">Version 0.1</p>
