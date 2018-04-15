@@ -1,6 +1,6 @@
 import { Component, Output, Input } from "@angular/core";
 
-import { Story } from "../";
+import { HtmlFile } from "../";
 
 @Component({
     selector: "text-viewer",
@@ -11,7 +11,7 @@ import { Story } from "../";
 export class TextViewerComponent {
 
     @Input() noTitle: boolean = false;
-    @Input() text: Story = new Story("");
+    @Input() text: HtmlFile = new HtmlFile("");
     @Input() title: string = "Title";
     @Input() style: object;
 
