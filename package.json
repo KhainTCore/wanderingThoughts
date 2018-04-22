@@ -4,12 +4,10 @@
   "description": "Personal website to post up stuff and experiment with.",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && webpack --config webpack.config.js --progress --profile --bail",
+    "build-deploy": "set NODE_ENV=production && rimraf dist && webpack --config webpack.deploy.config.js --progress --profile --bail && forever start dist/server.js",
     "build-start": "rimraf dist && webpack --config webpack.config.js --progress --profile --bail && node dist/server.js",
     "debug": "node --nolazy --debug-brk=5858 server/server.js",
-    "start": "node server/server.js",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
+    "start": "set NODE_ENV=production && node dist/server.js",
     "web-start": "webpack-dev-server --config webpack.config.js --inline --progress --port 8082"
   },
   "author": "KhainTCore",
@@ -61,6 +59,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "lodash": "^4.16.2",
+    "mammoth": "^1.4.5",
     "node-sass": "^4.8.3",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.7",

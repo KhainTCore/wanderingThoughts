@@ -1,9 +1,12 @@
 const express = require("express");
 const fs = require("fs");
-const helpers = require("../../config/helpers");
 import { NextFunction, Request, Response } from "express";
 
+const config = require("../../config/config")(process.env.NODE_ENV);
+
+import * as config from "../../config/config";
 const HtmlFile = require("../lib/htmlFile");
+const MarkdownFile = require("../lib/markdownFile");
 
 const router = express.Router();
 
@@ -14,26 +17,26 @@ router.use(function fetchWriting(req: Request, res: Response, next: NextFunction
 
 router.get("/file", function(req: Request, res: Response, next: NextFunction) {
     let typeDir: string = getType(req.query.type);
-    
-    if (req.query.title) {
-        fs.readFile(helpers.root(`files/${typeDir}/${req.query.title}.htm`), "utf8", (err, data) => {
+    // TODO: Handle error in helpers.root it doesn't seem to handle non-existing files well
+    let path = `${config.path}/${typeDir}/${req.query.title}.html`;
+    if (fs.existsSync(path)) {
+        fs.readFile(`${config.path}/${typeDir}/${req.query.title}.html`, "utf8", (err, data) => {
             if (err)
                 next(new Error("No file by that name was found."));
             
-            let html: HtmlFile = new HtmlFile(data, data, true);
+            let html: HtmlFile = new HtmlFile(data, null, false);
             res.status(200).json({file: html});
         });
     } else {
-        next(new Error("No file name was provided."));
+        next(new Error(`File "${req.query.title}" does not exist.`));
     }
 });
 
 router.get("/fileList", function(req: Request, res: Response, next: NextFunction) {
     let typeDir: string = getType(req.query.type);
-
-    fs.readdir(helpers.root(`files/${typeDir}`), "utf8", function(err, files) {
+    fs.readdir(`${config.path}/${typeDir}`, "utf8", function(err, files) {
         if (err)
-            next(new Error("An error occured tyring to fetch available stories"));
+            next(new Error("An error occurred when fetching the file list."));
     
         // Remove extensions and send only .htm(l) files
         let tmp: string[];
@@ -48,12 +51,43 @@ router.get("/fileList", function(req: Request, res: Response, next: NextFunction
     });
 });
 
-function getType(type) {
+router.get("/staticFiles", function(req: Request, res: Response, next: NextFunction) {
+    let typeDir: string = getType(req.query.type);
+    let page: string = getPage(req.query.page);
+
+    if (page) {
+        fs.readFile(`${config.path}/${typeDir}/${page}.md`, "utf8", function(err, data) {
+            if (err)
+                next(new Error("Some information on the page is missing. Please contact System Admin."));
+            let markdown: MarkdownFile = new MarkdownFile(null, null, data);
+            res.status(200).json({file: markdown});
+        });
+    } else
+        next(new Error("No information was found for that page. Please contact the System Admin."));
+});
+
+function getPage(page): string {
+    switch (page) {
+        case "h":
+        case "home":
+            return "homePage";
+    }
+
+    return null;
+}
+
+function getType(type): string {
     switch (type) {
         case "p":
         case "poem":
         case "poetry":
-            return "poetry";
+            return "poems";
+        case "e":
+        case "essay":
+            return "essays";
+        case "static":
+        case "st":
+            return "staticInfo";
         default:
             return "stories";
     }

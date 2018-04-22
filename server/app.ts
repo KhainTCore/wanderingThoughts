@@ -18,8 +18,7 @@ app.use(cookieParser());
 // Set Express Global Variables
 app.set("port", process.env.PORT || 8082);
 app.set("app", helpers.root("dist"));
-app.set("env", "development");
-
+app.set("env", process.env.NODE_ENV || "development");
 // Serve up webpacked content as "root" - achieved by .static
 app.use(express.static(app.get("app")));
 
