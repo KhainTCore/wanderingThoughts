@@ -2,7 +2,6 @@ const helpers = require("./helpers");
 
 module.exports = function(env) {
     let config = {};
-    console.log("Hello: " + env);
     if (env === "production") {
         config.path = "/home/bitnami/stack/resources/files";
         config.port = 443;

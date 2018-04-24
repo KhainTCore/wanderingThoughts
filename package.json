@@ -4,7 +4,7 @@
   "description": "Personal website to post up stuff and experiment with.",
   "main": "index.js",
   "scripts": {
-    "build-deploy": "set NODE_ENV=production && rimraf dist && webpack --config webpack.deploy.config.js --progress --profile --bail && forever start dist/server.js",
+    "build-deploy": "NODE_ENV=production && rimraf dist && webpack --config webpack.deploy.config.js --progress --profile --bail && forever start dist/server.js",
     "build-start": "rimraf dist && webpack --config webpack.config.js --progress --profile --bail && node dist/server.js",
     "debug": "node --nolazy --debug-brk=5858 server/server.js",
     "start": "set NODE_ENV=production && node dist/server.js",
