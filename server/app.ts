@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 
 import * as fetchFiles from "./routes/fetchFiles";
 
-const config = require("../../config/config")(process.env.NODE_ENV);
+const config = require("../config/config")(process.env.NODE_ENV);
 
 const app = express();
 
