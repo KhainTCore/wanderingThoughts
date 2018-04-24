@@ -4,7 +4,7 @@ module.exports = function(env) {
     let config = {};
     console.log("Hello: " + env);
     if (env === "production") {
-        config.path = "/home/bitnami/stack/var/data";
+        config.path = "/home/bitnami/stack/resources/files";
         config.port = 443;
     } else {
         config.path = helpers.root("files");
