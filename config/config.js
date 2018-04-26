@@ -1,14 +1,20 @@
 const helpers = require("./helpers");
+const env = process.env.NODE_ENV;
 
-module.exports = function(env) {
-    let config = {};
-    if (env === "production") {
-        config.path = "/home/bitnami/stack/resources/files";
-        config.port = 80; // TODO: Change to 443 at some point to support https
-    } else {
-        config.path = helpers.root("files");
-        config.port = 8082;
+let config = {};
+
+if (env === "production") {
+    config = {
+        env: "production",
+        path: "/home/bitnami/stack/resources/files",
+        port: 80 // TODO: Change to 443 at some point to support https
     }
-
-    return config;
+} else { // development/default
+    config = { 
+        env: "development",
+        path: helpers.root("files"),
+        port: 8082
+    };
 }
+
+module.exports = config;

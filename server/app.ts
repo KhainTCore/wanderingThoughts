@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 
 import * as fetchFiles from "./routes/fetchFiles";
 
-const config = require("../config/config")(process.env.NODE_ENV);
+const config = require("../config/config");
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.use(cookieParser());
 // Set Express Global Variables
 app.set("port", config.port || 8082);
 app.set("app", helpers.root("dist"));
-app.set("env", process.env.NODE_ENV || "development");
+app.set("env", config.env || "development");
 // Serve up webpacked content as "root" - achieved by .static
 app.use(express.static(app.get("app")));
 

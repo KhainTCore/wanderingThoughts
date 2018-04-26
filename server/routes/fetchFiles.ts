@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 import { NextFunction, Request, Response } from "express";
 
-const config = require("../../config/config")(process.env.NODE_ENV);
+const config = require("../../config/config");
 
 import * as config from "../../config/config";
 const HtmlFile = require("../lib/htmlFile");
