@@ -1,1 +1,5 @@
-// import "../src/assets/ic_brush_white_24px.svg";
+import "../src/assets/brush.svg";
+import "../src/assets/colorLens.svg";
+import "../src/assets/alignLeft.svg";
+import "../src/assets/alignRight.svg";
+import "../src/assets/alignCenter.svg";

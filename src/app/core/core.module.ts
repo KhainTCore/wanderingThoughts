@@ -1,14 +1,15 @@
 import { NgModule } from "@angular/core";
 
 import { FileFetcherService } from "./fileFetcher.service";
-import { MatSnackBarModule } from "@angular/material";
+import { MatSnackBarModule, MatIconModule } from "@angular/material";
+import { IconRegistryService } from "./iconRegistry.service";
 
 @NgModule({
     declarations: [],
     exports: [],
-    imports: [ MatSnackBarModule ],
+    imports: [ MatIconModule, MatSnackBarModule ],
     providers: [
-        FileFetcherService
+        FileFetcherService, IconRegistryService
     ]
 })
 
