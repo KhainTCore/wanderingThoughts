@@ -37,3 +37,11 @@ $forest-dark-theme: mat-dark-theme($forest-dark-primary, $forest-dark-accent, $f
 .forest-dark .mat-snack-bar-container {
     background: mat-color($forest-dark-accent) !important;
 }
+
+.forest-dark .primary-icon > svg {
+    fill: black;
+}
+
+.forest-dark .accent-icon > svg {
+    fill: white;
+}

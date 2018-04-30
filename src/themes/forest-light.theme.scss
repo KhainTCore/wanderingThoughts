@@ -19,3 +19,11 @@ $forest-light-theme: mat-light-theme($forest-light-primary, $forest-light-accent
 .forest-light .mat-snack-bar-container {
     background: mat-color($forest-light-accent) !important;
 }
+
+.forest-light .primary-icon > svg {
+    fill: black;
+}
+
+.forest-light .accent-icon > svg {
+    fill: black;
+}

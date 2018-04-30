@@ -23,3 +23,11 @@ $sea-dark-theme: mat-dark-theme($sea-dark-primary, $sea-dark-accent, $sea-dark-w
 .sea-dark .mat-snack-bar-container {
     background: mat-color($sea-dark-accent) !important;
 }
+
+.sea-dark .primary-icon > svg {
+    fill: white;
+}
+
+.sea-dark .accent-icon > svg {
+    fill: black;
+}

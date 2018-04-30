@@ -19,3 +19,11 @@ $sea-light-theme: mat-light-theme($sea-light-primary, $sea-light-accent, $sea-li
 .sea-light .mat-snack-bar-container {
     background: mat-color($sea-light-accent) !important;
 }
+
+.sea-light .primary-icon > svg {
+    fill: white;
+}
+
+.sea-light .accent-icon > svg {
+    fill: black;
+}
