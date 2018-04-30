@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FileFetcherService } from "../../core/fileFetcher.service";
 import { Content, HtmlFile } from "../../shared";
 import { MenuItem } from "../../shared/buttonMenu/buttonMenu.component";
+import { isNullOrUndefined } from "util";
 
 @Component({
     selector: "writing",
@@ -20,22 +21,30 @@ import { MenuItem } from "../../shared/buttonMenu/buttonMenu.component";
 export class WritingComponent implements OnInit {
 
     private alignmentMenu: MenuItem[] = [
-        new MenuItem(1, "Left", null, null, "l"),
-        new MenuItem(1, "Center", null, null, "c"),
-        new MenuItem(1, "Right", null, null, "r")
+        new MenuItem(1, null, "alignLeft", null, ["accent-icon"], "l"),
+        new MenuItem(1, null, "alignCenter", null, ["accent-icon"], "c"),
+        new MenuItem(1, null, "alignRight", null, ["accent-icon"], "r")
     ];
+    private alignmentTitle: object = {displayValue: "Align", style: {"font-weight": "bolder"}};
     private file: HtmlFile = new HtmlFile("");
     private fileTitle: string = "No Story Selected";
     private listIndent: number = 10;
     private textViewerStyle: any = {margin: "auto 30% auto 24px", "text-align": "left"};
     private marginMenu: MenuItem[] = [
-        new MenuItem(1, "Small", null, null, "s"),
-        new MenuItem(1, "Medium", null, null, "m"),
-        new MenuItem(1, "Large", null, null, "l")
+        new MenuItem(1, "Small", null , null, null, "s"),
+        new MenuItem(1, "Medium", null, null, null, "m"),
+        new MenuItem(1, "Large", null, null, null, "l")
     ];
+    private marginTitle: object = {displayValue: "Margin", style: {"font-weight": "bolder"}};
     private poetryList: Content[] = [];
     private storyList: Content[] = [];
     private tableOfContents: Content[] = [];
+    private textSizeMenu: MenuItem[] = [
+        new MenuItem(1, "Small", null, null, null, "s"),
+        new MenuItem(1, "Medium", null, null, null, "m"),
+        new MenuItem(1, "Large", null, null, null, "l")
+    ];
+    private textSizeTitle: object = {icon: "textSize", css: "accent-icon"};
 
     constructor(private fileFetcherService: FileFetcherService) { }
 
@@ -77,16 +86,36 @@ export class WritingComponent implements OnInit {
     }
 
     setAlignment(align: string) {
+        let textAlign;
         switch (align) {
             case "c":
-                this.textViewerStyle["text-align"] = "center";
+                textAlign = "center";
                 break;
             case "r":
-                this.textViewerStyle["text-align"] = "right";
+                textAlign = "right";
                 break;
             case "l":
             default:
-                this.textViewerStyle["text-align"] = "left";
+                textAlign = "left";
         }
+
+        this.textViewerStyle["text-align"] = textAlign;
+    }
+
+    setTextSize(size: string) {
+        let textSize;
+        switch(size) {
+            case "s":
+                textSize = "12";
+                break;
+            case "l":
+                textSize = "24";
+                break;
+            case "m":
+            default:
+                textSize = "16";
+        }
+
+        this.textViewerStyle["font-size.px"] = textSize;
     }
 }

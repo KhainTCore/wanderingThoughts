@@ -11,7 +11,7 @@ export class ButtonMenuComponent implements OnInit {
     @Input() buttonStyle: string = "b";
     @Input() color: string = "";
     @Input() menuItems: MenuItem[] = [];
-    @Input() title: string = "Menu";
+    @Input() title: object = {displayValue: "Menu"};
 
     @Output() onSelected = new EventEmitter();
 
@@ -28,13 +28,17 @@ export class ButtonMenuComponent implements OnInit {
 }
 
 export class MenuItem {
+    public css: string;
     public colspan: number;
     public clickValue: string;
     public displayValue: string;
     public icon: string;
     public style: object;
 
-    constructor(colspan: number, displayValue?: string, icon?: string, style?: object, clickValue?: string) {
+    constructor(colspan: number, displayValue?: string, icon?: string, style?: object, css?: string[], clickValue?: string) {
+        this.css = css ? css.join(" ") : "";
+        if (!displayValue && icon)
+            this.css += " icon-only";
         this.colspan = colspan;
         this.clickValue = clickValue;
         this.displayValue = displayValue;

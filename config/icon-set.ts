@@ -3,3 +3,4 @@ import "../src/assets/colorLens.svg";
 import "../src/assets/alignLeft.svg";
 import "../src/assets/alignRight.svg";
 import "../src/assets/alignCenter.svg";
+import "../src/assets/textSize.svg";

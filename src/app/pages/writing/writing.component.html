@@ -27,8 +27,6 @@
                         Essays
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <!-- <table-of-contents [border]="false" [content]="poetryList" (onSelected)="onSelected($event, 'p')">
-                </table-of-contents> -->
             </mat-expansion-panel>
         </mat-accordion>
     </mat-sidenav>
@@ -40,14 +38,17 @@
             <div class="container padding-top-sm tall">
                 <div class="container cols">
                     <button-menu class="bottom-pd-sm" buttonStyle="f" color="accent" [menuItems]="marginMenu" 
-                        (onSelected)="setMargins($event)" title="Margins">
+                        (onSelected)="setMargins($event)" [title]="marginTitle">
                     </button-menu>            
                     <button-menu class="bottom-pd-sm" buttonStyle="f" color="accent" [menuItems]="alignmentMenu" 
-                        (onSelected)="setAlignment($event)" title="Align">
+                        (onSelected)="setAlignment($event)" [title]="alignmentTitle">
+                    </button-menu>
+                    <button-menu class="bottom-pd-sm" buttonStyle="f" color="accent" [menuItems]="textSizeMenu"
+                        (onSelected)="setTextSize($event)" [title]="textSizeTitle">
                     </button-menu>
                 </div>
                 <text-viewer class="text-viewer" [style]="textViewerStyle" [text]="file" noTitle="true"></text-viewer>
-                <table-of-contents class="float toc" [content]="tableOfContents" title="Table of Contents" ></table-of-contents>            
+                <table-of-contents *ngIf="tableOfContents.length > 0" class="float toc" [content]="tableOfContents" title="Table of Contents" ></table-of-contents>            
             </div>
         </div>
     </mat-sidenav-content>

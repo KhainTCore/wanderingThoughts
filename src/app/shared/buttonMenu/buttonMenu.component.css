@@ -1,0 +1,15 @@
+.center {
+    text-align: center
+}
+
+.center-with-icon {
+    vertical-align: middle;
+}
+
+.icon-only {
+    margin-right: 0 !important;
+}
+
+.mat-menu-panel {
+    min-width: 48px;
+}

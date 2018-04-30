@@ -17,7 +17,7 @@
                 Blog
             </button>
             <span class="filler"></span>
-            <button-menu [menuItems]="themeMenu" (onSelected)="setTheme($event)" title="Themes"></button-menu>
+            <button-menu [menuItems]="themeMenu" (onSelected)="setTheme($event)" [title]="themeTitle"></button-menu>
         </mat-toolbar-row>
     </mat-toolbar>
     <div class="mat-app-background view-port">

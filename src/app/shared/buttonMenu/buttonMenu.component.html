@@ -1,15 +1,18 @@
 <button mat-button [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'b'">
-    {{title}}
+    <mat-icon *ngIf="title.icon" [ngClass]="title.css" [ngStyle]="title.style" [svgIcon]="title.icon"></mat-icon> 
+    <span class="center-with-icon" [ngClass]="title.css" [ngStyle]="title.style">{{title.displayValue}}</span>
 </button>
 <button mat-raised-button [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'r'">
-    {{title}}
+    <mat-icon *ngIf="title.icon" [ngClass]="title.css" [svgIcon]="title.icon"></mat-icon> 
+    <span class="center-with-icon" [ngClass]="title.css" [ngStyle]="title.style">{{title.displayValue}}</span>
 </button>
 <button mat-fab [color]="color" [matMenuTriggerFor]="menu" *ngIf="buttonStyle === 'f'">
-    {{title}}
+    <mat-icon *ngIf="title.icon" [ngClass]="title.css" [ngStyle]="title.style" [svgIcon]="title.icon"></mat-icon> 
+    <span class="center-with-icon" [ngClass]="title.css" [ngStyle]="title.style">{{title.displayValue}}</span>
 </button>
 <mat-menu #menu="matMenu">
-    <button mat-menu-item *ngFor="let item of menuItems" (click)="select(item)">
-        <mat-icon [ngStyle]="item.style" *ngIf="item.icon" [svgIcon]="item.icon"></mat-icon>
-        <span *ngIf="item.displayValue" [ngStyle]="item.style">{{item.displayValue}}</span>
+    <button mat-menu-item *ngFor="let item of menuItems" (click)="select(item)" [ngClass]="!item.displayValue ? 'center' : ''">
+        <mat-icon [ngStyle]="item.style" [ngClass]="item.css" *ngIf="item.icon" [svgIcon]="item.icon"></mat-icon>
+        <span *ngIf="item.displayValue" class="center-with-icon" [ngClass]="item.css" [ngStyle]="item.style">{{item.displayValue}}</span>
     </button>
 </mat-menu>
