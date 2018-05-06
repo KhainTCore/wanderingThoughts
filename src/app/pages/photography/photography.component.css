@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    height: 100%;
+    margin-top: 8px;
+    overflow: scroll;
+}
+
+.margins-sm {
+    margin: 4px;
+}
+
+.wrap-row {
+    flex-wrap: wrap;
+    justify-content: center;
+}

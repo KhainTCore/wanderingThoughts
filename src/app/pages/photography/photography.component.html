@@ -1,2 +1,6 @@
-<h1>Working on It</h1>
-<p>I swear - coding just takes time, is all.</p>
+<div class="container wrap-row">
+    <card-carousel *ngFor="let album of albums" (focus)="focusEvent(album)" (focusout)="lostFocusEvent(album)" 
+        [albumHeight]="album.height" [albumWidth]="album.width" [items]="album.photos" [navButtonIcons]="albumIcons"
+        [title]="album.title" class="margins-sm">
+    </card-carousel>
+</div>

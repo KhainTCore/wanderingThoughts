@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            {{title}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="container" [ngStyle]="{'height.px': albumHeight, 'width.px': albumWidth}">
+            <div class="container">
+                <div class="image-side"></div>
+                <div class="image-side"></div>
+                <div class="image-side"></div>
+            </div>
+            
+            <div class="container fill-space">
+                <div *ngFor="let item of items" [@viewState]="item.state" class="content center-container">
+                    <img *ngIf="item.image" class="self-center" [src]="item.image" [ngStyle]="{'height.px': albumHeight, 'max-width.px': imgWidthLimit}"/>
+                    <p *ngIf="item.content" class="outline">{{item.content}}</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="image-side"></div>
+                <div class="image-side"></div>
+                <div class="image-side"></div>
+            </div>
+        </div>
+        <div class="container" [ngClass]="navButtonStyle" [ngStyle]="{'width.px': albumWidth}">
+            <button mat-button class="left" (click)="toggleState(true)" *ngIf="navButtonIcons">
+                <mat-icon [svgIcon]="navButtonIcons.left"></mat-icon>
+            </button>
+            <button mat-button class="right" (click)="toggleState()" *ngIf="navButtonIcons">
+                <mat-icon [svgIcon]="navButtonIcons.right"></mat-icon>
+            </button>
+
+            <button mat-raised-button color="accent" class="left" (click)="toggleState(true)" *ngIf="!navButtonIcons">
+                Left
+            </button>
+            <button mat-raised-button color="accent" class="right" (click)="toggleState()" *ngIf="!navButtonIcons">
+                Right
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>

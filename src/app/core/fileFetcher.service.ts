@@ -9,11 +9,20 @@ import { MatSnackBar } from "@angular/material";
 export class FileFetcherService {
 
     private fetFilesUrl = "api/fetchFiles";
+    private albumsUrl = `${this.fetFilesUrl}/albums`;
     private fileListUrl = `${this.fetFilesUrl}/fileList`;
     private fileUrl = `${this.fetFilesUrl}/file`;
     private staticUrl = `${this.fetFilesUrl}/staticFiles`;
 
     constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
+
+    fetchAlbums(): Observable<any> {
+        return this.http.get<any>(this.albumsUrl).pipe(
+            tap((albums) => { this.log("Albums Fetched", null, 4000); }),
+            map((albums) => { return albums.albums; }),
+            catchError(this.handleError("Fetch Albums", []))
+        );
+    }
 
     fetchList(type: string): Observable<string[]> {
         return this.http.get<string[]>(this.fileListUrl, {
