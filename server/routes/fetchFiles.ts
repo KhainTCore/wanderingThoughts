@@ -15,6 +15,31 @@ router.use(function fetchWriting(req: Request, res: Response, next: NextFunction
     next();
 });
 
+router.get("/albums", function(req: Request, res: Response, next: NextFunction) {
+    let path = `${config.path}/photography`;
+    let albums = [];
+    if (fs.existsSync(path)) {
+        fs.readdir(path, (err, dirs) => {
+            for (let dir of dirs) {
+                let files =  fs.readdirSync(`${path}/${dir}`);
+                let photos = [];
+                for (let file of files) {
+                    photos.push(`/api/photography/${dir}/${file}`);
+                }
+                let res = {};
+                res[dir] = photos;
+                albums.push(res);
+            }
+
+            res.status(200).send({albums});
+        });
+    } else next(new Error("No photography albums found"));
+});
+
+router.get("/codeList", function(req: Request, res: Response, next: NextFunction) {
+    
+});
+
 router.get("/file", function(req: Request, res: Response, next: NextFunction) {
     let typeDir: string = getType(req.query.type);
     // TODO: Handle error in helpers.root it doesn't seem to handle non-existing files well
