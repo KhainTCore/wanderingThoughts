@@ -6,7 +6,7 @@ let config = {};
 if (env === "production") {
     config = {
         env: "production",
-        path: "/home/bitnami/stack/resources/files",
+        path: "/home/ubuntu/files",
         port: 80 // TODO: Change to 443 at some point to support https
     }
 } else { // development/default
