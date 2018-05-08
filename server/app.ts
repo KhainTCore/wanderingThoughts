@@ -26,7 +26,7 @@ app.use(express.static(app.get("app")));
 
 // Routes
 app.use("/api/fetchFiles", fetchFiles);
-app.use("/api/photography", express.static(helpers.root("files/photography")));
+app.use("/api/photography", express.static(`${config.port}/files/photography`));
 
 // Keep the front-end router from killing itself
 app.get('*', (req, res) => {
