@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MenuItem } from './shared/buttonMenu/buttonMenu.component';
-import { FileFetcherService, IconRegistryService } from './core/';
+import { FileFetcherService, IconRegistryService, CommonService } from './core/';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     private themeTitle: object = {icon: "colorLens", css: "primary-icon"};
 
     constructor(private fileFetcherService: FileFetcherService, private overlayContainer: OverlayContainer,
-        private iconRegistryService: IconRegistryService) { }
+        private iconRegistryService: IconRegistryService, private commonService: CommonService) { }
 
     ngOnInit() {
         this.overlayContainer.getContainerElement().classList.add(this.selectedTheme);

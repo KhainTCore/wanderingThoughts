@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FileFetcherService } from "../../core";
+import { FileFetcherService, CommonService } from "../../core";
 
 @Component({
     selector: "home",
@@ -16,8 +16,9 @@ import { FileFetcherService } from "../../core";
 export class HomeComponent implements OnInit {
 
     private content: string[] = [];
+    private version: string;
 
-    constructor(private fileFetcherService: FileFetcherService) { }
+    constructor(private fileFetcherService: FileFetcherService, private commonService: CommonService) { }
 
     ngOnInit() {
         this.fileFetcherService.fetchStaticPage("h").subscribe((file: any) => {
@@ -29,6 +30,13 @@ export class HomeComponent implements OnInit {
                 }
             }
         });
+
+        if (!this.commonService.version) {
+            this.commonService.watchVersion.subscribe((version) => {
+                this.version = version;
+            });
+        } else
+            this.version = this.commonService.version;
     }
 
 }

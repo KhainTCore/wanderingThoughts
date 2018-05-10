@@ -6,6 +6,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import * as fetchFiles from "./routes/fetchFiles";
+import * as common from "./routes/common";
 
 const config = require("../config/config");
 
@@ -25,6 +26,7 @@ app.set("env", config.env || "development");
 app.use(express.static(app.get("app")));
 
 // Routes
+app.use("/api/common", common);
 app.use("/api/fetchFiles", fetchFiles);
 app.use("/api/photography", express.static(`${config.path}/photography`));
 
