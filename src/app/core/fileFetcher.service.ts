@@ -10,6 +10,8 @@ export class FileFetcherService {
 
     private fetFilesUrl = "api/fetchFiles";
     private albumsUrl = `${this.fetFilesUrl}/albums`;
+    private codeUrl = `${this.fetFilesUrl}/code`;
+    private codeListUrl = `${this.fetFilesUrl}/codeList`;
     private fileListUrl = `${this.fetFilesUrl}/fileList`;
     private fileUrl = `${this.fetFilesUrl}/file`;
     private staticUrl = `${this.fetFilesUrl}/staticFiles`;
@@ -22,6 +24,17 @@ export class FileFetcherService {
             map((albums) => { return albums.albums; }),
             catchError(this.handleError("Fetch Albums", []))
         );
+    }
+
+    fetchCode(component: string): Observable<any> {
+        return this.http.get<any>(this.codeUrl, {params: {component}}).pipe(
+            tap((files) => { this.log("Code Files Fetched", null, 4000); }),
+            catchError(this.handleError("FetchAlbums", {}))
+        );
+    }
+
+    fetchCodeList(): Observable<string[]> {
+        return this.http.get<string[]>(this.codeListUrl);
     }
 
     fetchList(type: string): Observable<string[]> {

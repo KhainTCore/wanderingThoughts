@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { 
-        MatCardModule, MatDividerModule, MatGridListModule, MatSidenavModule, MatToolbarModule, MatExpansionModule, MatIconModule 
+        MatCardModule, MatDividerModule, MatGridListModule, MatSidenavModule, MatToolbarModule, MatExpansionModule, MatIconModule, MatChipsModule, MatButtonModule 
     } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -23,7 +23,7 @@ import { SharedModule } from "../shared/shared.module";
         PhotographyComponent, WritingComponent
     ],
     imports: [
-        CommonModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatDividerModule, 
+        CommonModule, BrowserAnimationsModule, FormsModule, MatButtonModule, MatCardModule, MatChipsModule, MatDividerModule, 
         MatExpansionModule, MatGridListModule, MatIconModule, MatSidenavModule, MatToolbarModule, SharedModule
     ]
 })

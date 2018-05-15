@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.columns {
+    flex-direction: column;
+}
+
+.gutter-sm {
+    margin: 2px;
+}
+
+.gutter-lg {
+    margin: 0px 8px 0px 8px;
+}
+
+.one-third-row {
+    height: 33%;
+}
+
+.two-third-row {
+    height: 67%;
+}
+
+.full-row {
+    height: 100%;
+}
+
+.live-card {
+    margin: 16px 32px 16px 32px
+}
+
+.max-width {
+    width: 100%;
+}
+
+.scrollable {
+    overflow: auto;
+}
+
+.wrap-row {
+    flex-wrap: wrap;
+}

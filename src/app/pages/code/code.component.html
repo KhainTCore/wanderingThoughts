@@ -1,2 +1,41 @@
-<h1>Code</h1>
-<h2>Coming Soon...</h2>
+<div class="container">
+    <div class="container columns">
+        <div class="one-third-row scrollable">
+            <mat-card class="live-card">
+                <mat-card-header>
+                    <mat-card-title>Code Selector</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="container wrap-row">
+                        <button mat-raised-button *ngFor="let component of fileList" [color]="component.selected ? 'accent' : ''" 
+                            (click)="toggleComponent(component)" class="gutter-lg">
+                            {{component.name}}
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <mat-divider class="gutter-sm"></mat-divider>
+        <div class="two-third-row scrollable">
+            <mat-card class="live-card">
+                <mat-card-header>
+                    <mat-card-title>Code View</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <tabbed-viewer [tabs]="tabs"></tabbed-viewer>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <mat-divider [vertical]="true" class="gutter-sm"></mat-divider>
+    <div class="full-row max-width">        
+        <mat-card class="live-card">
+            <mat-card-header>
+                <mat-card-title>Live View</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                Content of Live View
+            </mat-card-content>
+        </mat-card>        
+    </div>
+</div>

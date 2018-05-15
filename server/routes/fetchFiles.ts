@@ -3,7 +3,8 @@ const fs = require("fs");
 import { NextFunction, Request, Response } from "express";
 
 const config = require("../../config/config");
-
+const helpers = require("../../config/helpers");
+// import helpers from "../../config/helpers";
 import * as config from "../../config/config";
 const HtmlFile = require("../lib/htmlFile");
 const MarkdownFile = require("../lib/markdownFile");
@@ -36,8 +37,37 @@ router.get("/albums", function(req: Request, res: Response, next: NextFunction) 
     } else next(new Error("No photography albums found"));
 });
 
+router.get("/code", function(req: Request, res: Response, next: NextFunction) {
+    let component = req.query.component;
+    let codeFiles = [];
+    let path = helpers.root(`src/app/shared/${component}`);
+
+    fs.readdir(path, (err, files) => {
+        if (err) next(new Error(`Could not find the files for the ${component} component.`));
+        for (let name of files) {
+            let content = fs.readFileSync(`${path}/${name}`, "utf8");
+            let type = name.split(".");
+            type = type[type.length - 1].toUpperCase();
+            codeFiles.push({name: name, type, content});
+        }
+
+        res.status(200).send(codeFiles);
+    });
+});
+
 router.get("/codeList", function(req: Request, res: Response, next: NextFunction) {
-    
+    let path = helpers.root("src/app/shared");
+    let codeList = [];
+
+    fs.readdir(path, (err, components) => {
+        if (err) next(new Error("Could not find any Components"));
+        for (let component of components) {
+            if (fs.statSync(`${path}/${component}`).isDirectory())
+                codeList.push(component);
+        }
+
+        res.status(200).send(codeList);
+    });
 });
 
 router.get("/file", function(req: Request, res: Response, next: NextFunction) {
@@ -103,13 +133,13 @@ function getPage(page): string {
 
 function getType(type): string {
     switch (type) {
+        case "e":
+        case "essay":
+            return "essays";
         case "p":
         case "poem":
         case "poetry":
             return "poems";
-        case "e":
-        case "essay":
-            return "essays";
         case "static":
         case "st":
             return "staticInfo";
