@@ -1,12 +1,26 @@
 .container {
     display: flex;
     height: 100%;
-    margin-top: 8px;
-    overflow: scroll;
+}
+
+.gutter-sm {
+    margin: 2px;
+}
+
+.gutter-md {
+    margin: 8px;
 }
 
 .margins-sm {
     margin: 4px;
+}
+
+.row-sm {
+    width: 16%;
+}
+
+.scrollable {
+    overflow: auto;
 }
 
 .wrap-row {

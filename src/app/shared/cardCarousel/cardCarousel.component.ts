@@ -38,16 +38,18 @@ export class CardCarouselComponent implements OnInit {
     @Input() navButtonIcons: {left: string, right: string};
     @Input() navButtonStyle: string = "overlay-sides transparent";
     @Input() title: string = "Album";
+    @Input() zoomIcon: object | string;
 
     private states: string[] = ["unviewed", "viewing", "viewed"];
     private imgWidthLimit: number = this.albumWidth - 80;
+    private zoomed: Item;
 
     constructor() { }
 
     ngOnInit() {
         this.albumHeight = this.albumHeight || 300;
         this.albumWidth = this.albumWidth || 500;
-    }
+        }
 
     toggleState(left: boolean) {
         let currentItem: number = this.items.findIndex((item) => {
@@ -68,6 +70,16 @@ export class CardCarouselComponent implements OnInit {
             nextItem = left ? ++currentItem : --currentItem;
             if (nextItem < this.items.length && nextItem > -1)
                 this.items[nextItem].state = this.states[1];
+        }
+    }
+
+    zoomIn(img: Item) {
+        this.zoomed = img;
+    }
+
+    zoomOut() {
+        if (this.zoomed) {
+            this.zoomed = null;
         }
     }
 }

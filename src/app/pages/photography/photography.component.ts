@@ -12,6 +12,7 @@ export class PhotographyComponent implements OnInit {
 
     private albumIcons: object = {left: "arrowBack", right: "arrowForward"};
     private albums: Album[] = [];
+    private zoomIcon: object = {icon: "fullscreen", class: "accent-icon"};
 
     constructor(private fileFetcherService: FileFetcherService) { }
 
@@ -20,8 +21,10 @@ export class PhotographyComponent implements OnInit {
             for (let album of albums) {
                 let photos: Item[] = [];
                 let albumName: string = Object.keys(album)[0];
+                let state: string = "viewing";
                 for (let photo of album[albumName]) {
-                    photos.push(new Item(photo, null, "unviewed"));
+                    photos.push(new Item(photo, null, state));
+                    state = "unviewed";
                 }
                 this.albums.push(new Album(photos, albumName));
             }

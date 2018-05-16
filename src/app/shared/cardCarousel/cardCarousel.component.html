@@ -15,6 +15,12 @@
             <div class="container fill-space">
                 <div *ngFor="let item of items" [@viewState]="item.state" class="content center-container">
                     <img *ngIf="item.image" class="self-center" [src]="item.image" [ngStyle]="{'height.px': albumHeight, 'max-width.px': imgWidthLimit}"/>
+                    <div class="tray-sm btn-hover">
+                        <a class="center-container" (click)="zoomIn(item)">
+                            <mat-icon [svgIcon]="zoomIcon.icon || zoomIcon" [ngClass]="zoomIcon.class" *ngIf="zoomIcon"></mat-icon>
+                            <span *ngIf="!zoomIcon">Fullsize</span>
+                        </a>
+                    </div>
                     <p *ngIf="item.content" class="outline">{{item.content}}</p>
                 </div>
             </div>
@@ -42,3 +48,8 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<div class="background fullscreen" *ngIf="zoomed"></div>
+<a class="center-container fullscreen" (click)="zoomOut()" *ngIf="zoomed">
+    <img [src]="zoomed.image"/>    
+</a>

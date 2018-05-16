@@ -1,4 +1,13 @@
 /* General */
+.background {
+    background: black;
+    opacity: .7;
+}
+
+.btn-hover {
+    position: absolute;
+    bottom: 8px;
+}
 
 .container {
     display: flex;
@@ -24,12 +33,44 @@
     justify-content: space-between;
 }
 
+.full {
+    height: 100%;
+    width: 100%;
+}
+
+.fullscreen {
+    cursor: zoom-out;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.fullscreen > img {
+    align-self: center;
+    max-height: 95%;
+    max-width: 95%;
+    overflow: auto;
+}
+
 .image-side {
     background: grey;
     display: inline-block;
-    margin-left: 4px;
     margin-right: 4px;
-    width: 2px;
+    width: 1px;
+}
+
+.tray-sm {
+    background: black;
+    border-radius: 3px;
+    opacity: .7;
+    min-width: 8%;
+}
+
+a {
+    cursor: pointer;
 }
 
 /* End General */

@@ -1,6 +1,13 @@
-<div class="container wrap-row">
-    <card-carousel *ngFor="let album of albums" (focus)="focusEvent(album)" (focusout)="lostFocusEvent(album)" 
-        [albumHeight]="album.height" [albumWidth]="album.width" [items]="album.photos" [navButtonIcons]="albumIcons"
-        [title]="album.title" class="margins-sm">
-    </card-carousel>
+<div class="container">
+    <div class="container scrollable wrap-row">
+        <card-carousel *ngFor="let album of albums" (focus)="focusEvent(album)" (focusout)="lostFocusEvent(album)" 
+            [albumHeight]="album.height" [albumWidth]="album.width" [items]="album.photos" [navButtonIcons]="albumIcons"
+            [title]="album.title" [zoomIcon]="zoomIcon" class="margins-sm">
+        </card-carousel>
+    </div>
+    <mat-divider vertical="true" class="gutter-md"></mat-divider>
+    <div class="row-sm scrollable">
+        <h1>Construction Under Way</h1>
+        <p>Now, I just need to find the way</p>
+    </div>
 </div>
