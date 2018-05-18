@@ -26,6 +26,7 @@ export class WritingComponent implements OnInit {
         new MenuItem(1, null, "alignRight", null, ["accent-icon"], "r")
     ];
     private alignmentTitle: object = {displayValue: "Align", style: {"font-weight": "bolder"}};
+    private dailyPracticeList: Content[] = [];
     private file: HtmlFile = new HtmlFile("");
     private fileTitle: string = "No Story Selected";
     private listIndent: number = 10;
@@ -59,6 +60,12 @@ export class WritingComponent implements OnInit {
         this.fileFetcherService.fetchList("p").subscribe((list) => {
             for (let name of list) {
                 this.poetryList.push(new Content(name, 0));
+            }
+        });
+
+        this.fileFetcherService.fetchList("dp").subscribe((list) => {
+            for (let name of list) {
+                this.dailyPracticeList.push(new Content(name, 0));
             }
         });
     }

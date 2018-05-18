@@ -133,6 +133,9 @@ function getPage(page): string {
 
 function getType(type): string {
     switch (type) {
+        case "dp":
+        case "dailyPractice":
+            return "dailyPractice";
         case "e":
         case "essay":
             return "essays";
