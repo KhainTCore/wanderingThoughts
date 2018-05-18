@@ -36,7 +36,6 @@ export class CardCarouselComponent implements OnInit {
         new Item(null), new Item(null), new Item(null)
     ];
     @Input() navButtonIcons: {left: string, right: string};
-    @Input() navButtonStyle: string = "overlay-sides transparent";
     @Input() navButtonStyle: string = "overlay-sides";
     @Input() title: string = "Album";
     @Input() zoomIcon: object | string;
