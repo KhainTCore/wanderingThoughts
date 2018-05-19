@@ -8,3 +8,4 @@ import "../src/assets/arrowForward.svg";
 import "../src/assets/arrowBack.svg";
 import "../src/assets/markGithub.svg";
 import "../src/assets/fullscreen.svg";
+import "../src/assets/copyright.svg";

@@ -33,13 +33,15 @@ Things to work on, though nothing is in any particular order ('Cause chaos and m
 
 #### Coding
 
-* Live View
-* Code View
-* Select View
+* Create examples to be run in live View
+* Figure out how to feed code other than the reusable shared components
+* How to run that code (package dah bich?)
+* Add Syntax hilighting for pretty
 
 #### Writing
 
 * Add a area to write out descriptions/author notes for the writing page
+* Add "favorite" button
 
 ## Future Features
 

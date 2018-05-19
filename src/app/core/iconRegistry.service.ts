@@ -17,7 +17,8 @@ export class IconRegistryService {
         {name: "arrowForward", url: "arrowForward.svg"},
         {name: "arrowBack", url: "arrowBack.svg"},
         {name: "gitHub", url: "markGithub.svg"},
-        {name: "fullscreen", url: "fullscreen.svg"}
+        {name: "fullscreen", url: "fullscreen.svg"},
+        {name: "copyright", url: "copyright.svg"}
     ];
 
     constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
