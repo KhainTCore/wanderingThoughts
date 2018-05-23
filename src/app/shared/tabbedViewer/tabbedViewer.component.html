@@ -1,10 +1,10 @@
 <mat-tab-group>
     <mat-tab [label]="tab.title" *ngFor="let tab of tabs">
-        <div *ngIf="!tab.code" class="top-pd-sm respect-newlines">
+        <div *ngIf="!tab.code" class="top-pd-sm respect-newlines" [ngStyle]="tabBodyStyle">
             {{tab.content}}
         </div>
-        <code *ngIf="tab.code" class="top-pd-sm respect-newlines">
-            {{tab.content}}
-        </code>
+        <pre *ngIf="tab.code" [ngStyle]="tabBodyStyle">
+            <code [innerHtml]="tab.content"></code>
+        </pre>
     </mat-tab>
 </mat-tab-group>

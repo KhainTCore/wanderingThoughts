@@ -47,8 +47,9 @@ router.get("/code", function(req: Request, res: Response, next: NextFunction) {
         for (let name of files) {
             let content = fs.readFileSync(`${path}/${name}`, "utf8");
             let type = name.split(".");
-            type = type[type.length - 1].toUpperCase();
-            codeFiles.push({name: name, type, content});
+            type = type[type.length - 1];
+            if (content.length > 0)
+                codeFiles.push({name: name, type: type.toUpperCase(), language: getLanguage(type), content: `\n${content}`});
         }
 
         res.status(200).send(codeFiles);
@@ -149,6 +150,21 @@ function getType(type): string {
         default:
             return "stories";
     }
+}
+
+function getLanguage(type): string {
+    switch(type) {
+        case "css":
+        case "html":
+            return type;
+        case "md":
+            return "markdown";
+        case "js":
+            return "javascript";
+        case "ts":
+            return "typescript";
+    }
+    return "";
 }
 
 // Can't mix import and module.exports

@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="container columns">
+    <div class="container columns half-width">
         <div class="one-third-row scrollable">
             <mat-card class="live-card">
                 <mat-card-header>
@@ -22,13 +22,13 @@
                     <mat-card-title>Code View</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <tabbed-viewer [tabs]="tabs"></tabbed-viewer>
+                    <tabbed-viewer [tabs]="tabs" [tabBodyStyle]="tabBodyStyle"></tabbed-viewer>
                 </mat-card-content>
             </mat-card>
         </div>
     </div>
     <mat-divider [vertical]="true" class="gutter-sm"></mat-divider>
-    <div class="full-row max-width">        
+    <div class="full-row half-width">        
         <mat-card class="live-card">
             <mat-card-header>
                 <mat-card-title>Live View</mat-card-title>

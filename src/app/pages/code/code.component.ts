@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Tab } from "../../shared/tabbedViewer/tabbedViewer.component";
 import { FileFetcherService } from "../../core";
+import * as Prism from "prismjs";
 
 @Component({
     selector: "code",
@@ -13,11 +14,9 @@ export class CodeComponent implements OnInit {
     private files: object = {};
     private fileList: object[] = [];
     private tabs: Tab[] = [
-        {title: "HTML", content: "This section will be dedicated to the componentss HTML"},
-        {title: "TS", content: "This section will be dedicated to the component's TypeScript"},
-        {title: "CSS", content: "This section will be dedicated to the component's CSS"},
-        {title: "SPECS", content: "This section will be dedicated to the test specs of the component"}
+        new Tab("Select Component", "Select a content from the section above to load this section with that code"),
     ];
+    private tabBodyStyle: object = {"margin-left": "8px"};
     private activeToggle: {name: string, selected: boolean};
 
     constructor(private fileFetcherService: FileFetcherService) { }
@@ -37,7 +36,8 @@ export class CodeComponent implements OnInit {
             this.fileFetcherService.fetchCode(component.name).subscribe((files) => {
                 this.tabs = [];
                 for (let file of files) {
-                    this.tabs.push({title: file.type, content: file.content});
+                    let syntaxHilitedCode = Prism.highlight(file.content, Prism.languages[file.language]);
+                    this.tabs.push(new Tab(file.name, syntaxHilitedCode, `language-${file.language}`, true));
                 }
             });
 

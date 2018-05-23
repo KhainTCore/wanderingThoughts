@@ -12,3 +12,8 @@ import "rxjs";
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
+import "prismjs";
+import "prismjs/components/prism-css.min";
+import "prismjs/components/prism-typescript.min";
+import "prismjs/components/prism-markdown.min";
+import "prismjs/themes/prism-okaidia.css";
