@@ -30,8 +30,8 @@ export class WritingComponent implements OnInit {
     ];
     private alignmentTitle: object = {displayValue: "Align", style: {"font-weight": "bolder"}};
     private dailyPracticeList: Content[] = [];
-    private drawer: {active: boolean, icon: string} = {active: false, icon: "unfoldMore"};
-    private file: HtmlFile = new HtmlFile("", "Select a Story", null, null, {favorite: "favoriteBorder"});
+    private drawer: {active: boolean, icon: string, hide: boolean} = {active: false, icon: "unfoldMore", hide: true};
+    private file: HtmlFile = new HtmlFile("", "Select a Story", null, null, null);
     private fileTitle: string = "No Story Selected";
     private listIndent: number = 10;
     private textViewerStyle: any = {margin: "0 30% 0 24px", "text-align": "left"};
@@ -79,10 +79,11 @@ export class WritingComponent implements OnInit {
             .subscribe((file: {file: any}) => {
                 let misc = {
                     favorite: "favoriteBorder", 
-                    meta: Prism.highlight(file.file.meta, Prism.languages.markdown)
+                    meta: file.file.meta ? Prism.highlight(file.file.meta, Prism.languages.markdown) : undefined
                 };
                 let title = file.file.title || content.title;
                 this.file = new HtmlFile(file.file.body, title, null, file.file.style, misc);                
+                this.drawer.hide = misc.meta ? false : true;
             });
     }
 
