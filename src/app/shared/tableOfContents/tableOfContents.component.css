@@ -5,6 +5,7 @@
     font-weight: 400;
     padding-bottom: 4px;
     padding-top: 4px;
+    text-align: left;
 }
 
 .button-link:hover, a:hover {

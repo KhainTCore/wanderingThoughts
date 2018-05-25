@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { CardViewerModule } from "./cardViewer/cardViewer.module";
 import { TableOfContentsModule } from "./tableOfContents/tableOfContents.module";
 import { TextViewerModule } from "./textViewer/textViewer.module";
 import { ButtonMenuModule } from "./buttonMenu/buttonMenu.module";
@@ -13,10 +12,10 @@ import { CardCarouselModule } from "./cardCarousel/cardCarousel.module";
         
     ],
     exports: [
-        ButtonMenuModule, CardCarouselModule, CardViewerModule, TabbedViewerModule, TableOfContentsModule, TextViewerModule
+        ButtonMenuModule, CardCarouselModule, TabbedViewerModule, TableOfContentsModule, TextViewerModule
     ],
     imports: [
-        ButtonMenuModule, CommonModule, CardCarouselModule, CardViewerModule, TabbedViewerModule, TableOfContentsModule
+        ButtonMenuModule, CommonModule, CardCarouselModule, TabbedViewerModule, TableOfContentsModule
     ]
 })
 
