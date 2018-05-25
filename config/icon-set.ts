@@ -9,3 +9,7 @@ import "../src/assets/arrowBack.svg";
 import "../src/assets/markGithub.svg";
 import "../src/assets/fullscreen.svg";
 import "../src/assets/copyright.svg";
+import "../src/assets/favorite.svg";
+import "../src/assets/favoriteBorder.svg";
+import "../src/assets/unfoldMore.svg";
+import "../src/assets/unfoldLess.svg";

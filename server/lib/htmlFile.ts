@@ -1,9 +1,10 @@
 class HtmlFile {
     public body: string;
+    public meta: string;
     public style: string;
     public title: string;
 
-    constructor(body?: string, style?: string, parse?: boolean) {
+    constructor(body?: string, meta?: string, style?: string, parse?: boolean) {
         if (parse) {
             this.body = this.parseTag(body, "body", "MsoTitle");
             this.style = this.parseTag(style, "style");
@@ -11,6 +12,7 @@ class HtmlFile {
             this.body = body;
             this.style = style;
         }
+        this.meta = meta;
     }
 
     /**

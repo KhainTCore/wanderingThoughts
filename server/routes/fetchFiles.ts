@@ -76,11 +76,12 @@ router.get("/file", function(req: Request, res: Response, next: NextFunction) {
     // TODO: Handle error in helpers.root it doesn't seem to handle non-existing files well
     let path = `${config.path}/${typeDir}/${req.query.title}.html`;
     if (fs.existsSync(path)) {
+        let meta = fs.readFileSync(`${config.path}/${typeDir}/${req.query.title}.md`, "utf8");
         fs.readFile(`${config.path}/${typeDir}/${req.query.title}.html`, "utf8", (err, data) => {
             if (err)
                 next(new Error("No file by that name was found."));
             
-            let html: HtmlFile = new HtmlFile(data, null, false);
+            let html: HtmlFile = new HtmlFile(data, meta, null, false);
             res.status(200).json({file: html});
         });
     } else {

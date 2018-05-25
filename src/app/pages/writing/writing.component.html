@@ -58,7 +58,22 @@
                     </button-menu>
                 </div>
                 <text-viewer class="text-viewer" [style]="textViewerStyle" [text]="file" noTitle="true"></text-viewer>
+                <div class="bottom-div elevation-lvl1 container cols" *ngIf="drawer.active">
+                    <code class="pd-md" [innerHtml]="file.misc.meta"></code>
+                </div>        
                 <table-of-contents *ngIf="tableOfContents.length > 0" class="float toc" [content]="tableOfContents" title="Table of Contents" ></table-of-contents>            
+                <div class="container cols tall left-pd-sm">
+                    <div class="bottom-pd-sm">
+                        <button mat-fab color="accent" (click)="toggleFavorite()">
+                            <mat-icon [svgIcon]="file.misc.favorite"></mat-icon>
+                        </button>
+                    </div>
+                    <div class="bottom-pd-sm">
+                        <button mat-fab color="accent" (click)="toggleDrawer()">
+                            <mat-icon [svgIcon]="drawer.icon"></mat-icon>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </mat-sidenav-content>

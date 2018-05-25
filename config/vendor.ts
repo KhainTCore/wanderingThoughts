@@ -14,6 +14,7 @@ import "rxjs";
 // You can import js, ts, css, sass, ...
 import "prismjs";
 import "prismjs/components/prism-css.min";
+import "prismjs/components/prism-markdown.min.js";
 import "prismjs/components/prism-typescript.min";
 import "prismjs/components/prism-markdown.min";
 import "prismjs/themes/prism-okaidia.css";
