@@ -3,6 +3,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
+const config = require("../config/config");
+
 module.exports = {
   entry: { // Entry point files that define the bundles
     'polyfills': './config/polyfills.ts',
@@ -64,6 +66,9 @@ module.exports = {
 
   plugins: [
     new ExtractTextPlugin("style.css"),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": `"${config.env}"`
+    }),
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows

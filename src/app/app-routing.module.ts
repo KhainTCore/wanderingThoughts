@@ -22,7 +22,7 @@ const appRoutes: Routes = [
         RouterModule
     ],
     imports: [
-        RouterModule.forRoot(appRoutes, {enableTracing: true})
+        RouterModule.forRoot(appRoutes, {enableTracing: process.env.NODE_ENV === "production" ? false : true})
     ]
 })
 
