@@ -37,6 +37,15 @@ router.get("/albums", function(req: Request, res: Response, next: NextFunction) 
     } else next(new Error("No photography albums found"));
 });
 
+router.get("/albumMeta", function(req: Request, res: Response, next: NextFunction) {
+    let path = `${config.path}/photography/${req.query.album}/meta.md`;
+
+    fs.readFile(path, "utf8", (err, data) => {
+        if (err) next(new Error("No description."));
+        else res.status(200).send({file: data});
+    });
+});
+
 router.get("/code", function(req: Request, res: Response, next: NextFunction) {
     let component = req.query.component;
     let codeFiles = [];

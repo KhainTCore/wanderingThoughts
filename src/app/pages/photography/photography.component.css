@@ -3,6 +3,20 @@
     height: 100%;
 }
 
+.col-lg {
+    width: 64%;
+}
+
+.col-md {
+    width: 32%;
+}
+
+.cols {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .gutter-sm {
     margin: 2px;
 }
@@ -15,10 +29,6 @@
     margin: 4px;
 }
 
-.row-sm {
-    width: 16%;
-}
-
 .scrollable {
     overflow: auto;
 }
@@ -26,4 +36,8 @@
 .wrap-row {
     flex-wrap: wrap;
     justify-content: center;
+}
+
+code {
+    white-space: pre-line;
 }

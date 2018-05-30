@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Item } from "../../shared/cardCarousel/cardCarousel.component";
 import { FileFetcherService } from "../../core";
 
+import * as Prism from "prismjs";
+
 @Component({
     selector: "photography",
     styleUrls: ["../../app.component.css", "./photography.component.css"],
@@ -10,9 +12,12 @@ import { FileFetcherService } from "../../core";
 
 export class PhotographyComponent implements OnInit {
 
+    private defaultDescription: string = "# Description\nPicture some good words here, and not the empty because I was to lazy to write some";
+
     private albumIcons: object = {left: "arrowBack", right: "arrowForward"};
     private albums: Album[] = [];
     private zoomIcon: object = {icon: "fullscreen", class: "accent-icon"};
+    private albumDescription: string = this.defaultDescription;
 
     constructor(private fileFetcherService: FileFetcherService) { }
 
@@ -32,15 +37,11 @@ export class PhotographyComponent implements OnInit {
     }
 
     focusEvent(album: Album) {
-        album.height = 600;
-        album.width = 800;
+        this.fileFetcherService.fetchAlbumMeta(album.title).subscribe((meta: string) => {
+            meta = meta || this.defaultDescription;
+            this.albumDescription = Prism.highlight(meta, Prism.languages.markdown);
+        });
     }
-
-    lostFocusEvent(album: Album) {
-        album.height = 300;
-        album.width = 500;
-    }
-
 }
 
 class Album {

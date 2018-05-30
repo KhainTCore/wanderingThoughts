@@ -10,6 +10,7 @@ export class FileFetcherService {
 
     private fetFilesUrl = "api/fetchFiles";
     private albumsUrl = `${this.fetFilesUrl}/albums`;
+    private albumMetaUrl = `${this.fetFilesUrl}/albumMeta`;
     private codeUrl = `${this.fetFilesUrl}/code`;
     private codeListUrl = `${this.fetFilesUrl}/codeList`;
     private fileListUrl = `${this.fetFilesUrl}/fileList`;
@@ -20,15 +21,20 @@ export class FileFetcherService {
 
     fetchAlbums(): Observable<any> {
         return this.http.get<any>(this.albumsUrl).pipe(
-            tap((albums) => { this.log("Albums Fetched", null, 4000); }),
             map((albums) => { return albums.albums; }),
             catchError(this.handleError("Fetch Albums", []))
         );
     }
 
+    fetchAlbumMeta(album: string): Observable<any> {
+        return this.http.get<any>(this.albumMetaUrl, {params: {album}}).pipe(
+            map((file) => { return file.file; }),
+            catchError(this.handleError("FetchAlbumMeta", {}))
+        );
+    }
+
     fetchCode(component: string): Observable<any> {
         return this.http.get<any>(this.codeUrl, {params: {component}}).pipe(
-            tap((files) => { this.log("Code Files Fetched", null, 4000); }),
             catchError(this.handleError("FetchAlbums", {}))
         );
     }
@@ -47,14 +53,12 @@ export class FileFetcherService {
         return this.http.get(this.fileUrl, {
             params: { type, title }, 
         }).pipe(
-            tap((story) => { this.log("Story Fetched", null, 4000); }),
             catchError(this.handleError("Fetch File", {file: {}}))
         );
     }
 
     fetchStaticPage(page: string): Observable<object> {
         return this.http.get(this.staticUrl, {params: {page, type: "st"}}).pipe(
-            tap((html) => { this.log(`Static HTML fetched for Home Page`, null, 4000); }),
             catchError(this.handleError("Fetch Page Information", {file: {}}))
         );
     }

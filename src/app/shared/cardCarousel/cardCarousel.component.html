@@ -1,11 +1,11 @@
-<mat-card>
+<mat-card [ngStyle]="{'width.px': albumWidth}"> 
     <mat-card-header>
         <mat-card-title>
             {{title}}
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div class="container" [ngStyle]="{'height.px': albumHeight, 'width.px': albumWidth}">
+        <div class="container" [ngStyle]="{'height.px': albumHeight}">
             <div class="container">
                 <div class="image-side"></div>
                 <div class="image-side"></div>
