@@ -30,7 +30,7 @@ export class WritingComponent implements OnInit {
     ];
     private alignmentTitle: object = {displayValue: "Align", style: {"font-weight": "bolder"}};
     private dailyPracticeList: Content[] = [];
-    private drawer: {active: boolean, icon: string, hide: boolean} = {active: false, icon: "unfoldMore", hide: true};
+    private drawer: {active: boolean, hide: boolean} = {active: false, hide: true};
     private file: HtmlFile = new HtmlFile("", "Select a Story", null, null, null);
     private fileTitle: string = "No Story Selected";
     private listIndent: number = 10;
@@ -58,7 +58,6 @@ export class WritingComponent implements OnInit {
             for (let name of list) {
                 this.storyList.push(new Content(name, 0));
             }            
-            this.storyList.push(new Content("Doesn't Exist", 0));
         });
 
         this.fileFetcherService.fetchList("p").subscribe((list) => {
@@ -137,7 +136,6 @@ export class WritingComponent implements OnInit {
 
     toggleDrawer() {
         this.drawer.active = !this.drawer.active;
-        this.drawer.icon = !this.drawer.active ? "unfoldMore" : "unfoldLess";
     }
 
     toggleFavorite() {
