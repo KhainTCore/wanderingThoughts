@@ -9,24 +9,34 @@ import { trigger, state, style, animate, transition } from "@angular/animations"
         trigger("viewState", [
             state("unviewed", style({
                 display: "none",
-                transform: "scale(.1, 1)"
             })),
             state("viewing", style({
+                "justify-content": "center",
                 "margin-left": "8px",
-                "margin-right": "8px"
-                // transform: "scale(2, .5)"
+                "margin-right": "8px",
             })),
             state("viewed", style({
                 display: "none",
-                transform: "scale(.1, 1)"
             })),
-            transition("unviewed => viewing", animate("700ms ease-in")),
-            transition("viewing => viewed", animate("700ms ease-out")),
-            transition("viewed => viewing", animate("700ms ease-in")),
-            transition("viewing => unviewed", animate("700ms ease-out"))
+            // transition("unviewed => viewing", animate("1000ms ease-in", style({
+            //     "justify-content": "flex-end",
+            //     transform: "translatex(-50%) scale(1, 1)"                              
+            // }))),
+            transition("viewing => unviewed", animate("1000ms ease-out", style({
+                transform: "translate(50%) scale(0, 1)"
+            }))),
+            // transition("viewed => viewing", animate("1000ms ease-in", style({
+            //     "justify-content": "flex-start",
+            //     transform: "translate(50%) scale(1, 1)"                
+            // }))),
+            transition("viewing => viewed", animate("1000ms ease-out", style({
+                transform: "translate(-50%) scale(0, 1)"
+            })))
         ])
     ]
 })
+    
+
 
 export class CardCarouselComponent implements OnInit {
 
@@ -41,7 +51,8 @@ export class CardCarouselComponent implements OnInit {
     @Input() zoomIcon: object | string;
 
     private states: string[] = ["unviewed", "viewing", "viewed"];
-    private imgWidthLimit: number = this.albumWidth - 80;
+    private numberOfViewed: number = 0;
+    private previousItemIndex: number;
     private zoomed: Item;
 
     constructor() { }
@@ -49,9 +60,21 @@ export class CardCarouselComponent implements OnInit {
     ngOnInit() {
         this.albumHeight = this.albumHeight || 300;
         this.albumWidth = this.albumWidth || 500;
-        }
 
-    toggleState(left: boolean) {
+        for (let item of this.items) {
+            if (item.state === this.states[1] || item.state === this.states[2])
+                this.numberOfViewed++;
+        }
+    }
+
+    /**
+     * An exercise in fuck you. To ocmplicated to actually maintain
+     * 
+     * @param {boolean} left 
+     * @memberof CardCarouselComponent
+     * @private
+     */    
+    private toggleStateDepricated(left: boolean) {
         let currentItem: number = this.items.findIndex((item) => {
             return item.state === this.states[1];
         });
@@ -73,12 +96,62 @@ export class CardCarouselComponent implements OnInit {
         }
     }
 
+    /**
+     * Switches the state of the currently viewed item with the next or previous item
+     * within range.
+     * 
+     * @param {boolean} left from viewed to viewing (i.e. "going back" or "left arrow") 
+     * @memberof CardCarouselComponent
+     */
+    toggleState(left: boolean) {
+        let currentItem: number = this.items.findIndex((item) => {
+            return item.state === this.states[1];
+        });
+        let moved: boolean = false;
+        const isBeginning: boolean = currentItem === 0;
+        const isLast: boolean = currentItem === this.items.length - 1;
+        
+        if (!isBeginning && !isLast) {
+            this.items[currentItem].state = left ? this.states[0] : this.states[2];
+            setTimeout(() => {
+                this.items[left ? --currentItem : ++currentItem].state = this.states[1]; }, 1050);            
+            moved = true;
+        } else if (isBeginning && !left) {
+            this.items[currentItem].state = this.states[2];
+            setTimeout(() => {
+                this.items[++currentItem].state = this.states[1];            
+            }, 1050);
+                moved = true;
+        } else if (isLast && left) {
+            this.items[currentItem].state = this.states[0];
+            setTimeout(() => {
+                this.items[++currentItem].state = this.states[1];            
+            }, 1050);
+            moved = true;
+        }
+
+        if (moved)
+            this.numberOfViewed += left ? -1 : 1;        
+    }
+
+    /**
+     * Mark an image as being in the "zoomed" state
+     * 
+     * @param {Item} img to be set in the "zoomed" state
+     * @memberof CardCarouselComponent
+     */
     zoomIn(img: Item) {
         this.zoomed = img;
     }
 
+    /**
+     * Clear out the "zoomed" state
+     * 
+     * @memberof CardCarouselComponent
+     */
     zoomOut() {
         if (this.zoomed) {
+            this.zoomed.active = false;
             this.zoomed = null;
         }
     }
@@ -86,6 +159,7 @@ export class CardCarouselComponent implements OnInit {
 
 
 export class Item {
+    public active: boolean;
     public content: string;
     public image: string;
     public state: string;

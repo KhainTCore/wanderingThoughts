@@ -20,22 +20,10 @@
     justify-content: center;
 }
 
-.content {
-    flex-grow: 2;
-}
-
-.outline {
-    border: 1px solid darkgray;
-}
-
-.fill-space {
-    flex-grow: 2;
-    justify-content: space-between;
-}
-
-.full {
-    height: 100%;
-    width: 100%;
+.counter {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
 }
 
 .fullscreen {
@@ -55,11 +43,8 @@
     overflow: auto;
 }
 
-.image-side {
-    background: grey;
-    display: inline-block;
-    margin-right: 4px;
-    width: 1px;
+.simple-container {
+    display: flex;
 }
 
 .tray-sm {
@@ -84,18 +69,12 @@ a {
 }
 
 .overlay-sides {
-    height: auto;
+    display: flex;
     justify-content: space-between; 
+    left: 0;
     position: absolute;
     top: 50%;
-}
-
-.overlay-sides > .left {
-    margin-left: 32px;
-}
-
-.overlay-sides > .right {
-    margin-right: 32px;
+    width: 100%;
 }
 
 .transparent {
