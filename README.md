@@ -1,16 +1,15 @@
 # Personal Website
 
-The name makes no sense? Of course it doesn't, it is just a random string of words I threw together. Silly you, thinking there are logic here.
+The name makes no sense? Of course it doesn't, it is just a random string of words I threw together. Silly you, thinking there was logic here.
 
 ## TODO (Tasks)
 
-Things to work on, though nothing is in any particular order ('Cause chaos and madness are more fun).
+Things to work on, though nothing is in any particular order ('Cause chaos and madness are more fun!).
 
 ### Config/Deploy
 
 * Set up a CI/CD pipeline (pipeline... not pipe) (using Jenkins or some other free equivalent)
 * Implement HTTPS with port 443 (currently just running on http - okay since I don't take user input (gets hacked next week))
-* Switch Angular to Production Mode
 * Ensure AoT Compilation in Angular for Efficiency
 * Create A Deploy Strategy for Uploading Content
 
@@ -24,24 +23,24 @@ Things to work on, though nothing is in any particular order ('Cause chaos and m
 * Abstract and clean up the CSS for components. At the moment there is a lot of duplication
 * Ensure scalability down to mobile
 * Create Favicon to server up
+* Hide console.logs if in Dev mode (on HTTP Errors)
 
 #### Photography
 
-* Card Grid
-* Enlarge Selection
 * Need to make Photo delivery more performant
+* Identify panaramas and either stretch for them or flag so the user can easily tell
+* Add subtitles? Jokes perhaps?
+* Add entrance animations (Gave up at the moment, as I prefer not being angry every five seconds)
 
 #### Coding
 
 * Create examples to be run in live View
 * Figure out how to feed code other than the reusable shared components
 * How to run that code (package dah bich?)
-* Add Syntax hilighting for pretty
 
 #### Writing
 
-* Add a area to write out descriptions/author notes for the writing page
-* Add "favorite" button
+Blissfully empty (don't burst my bubble, damn it)
 
 ## Future Features
 
