@@ -29,7 +29,7 @@ export class FileFetcherService {
     fetchAlbumMeta(album: string): Observable<any> {
         return this.http.get<any>(this.albumMetaUrl, {params: {album}}).pipe(
             map((file) => { return file.file; }),
-            catchError(this.handleError("FetchAlbumMeta", {}))
+            catchError(this.handleError("FetchAlbumMeta", null))
         );
     }
 

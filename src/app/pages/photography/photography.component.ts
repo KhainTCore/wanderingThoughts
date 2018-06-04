@@ -34,6 +34,8 @@ export class PhotographyComponent implements OnInit {
                 this.albums.push(new Album(photos, albumName));
             }
         });
+
+        this.albumDescription = Prism.highlight(this.defaultDescription, Prism.languages.markdown);
     }
 
     focusEvent(album: Album) {

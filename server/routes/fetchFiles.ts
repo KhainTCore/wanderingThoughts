@@ -19,13 +19,15 @@ router.use(function fetchWriting(req: Request, res: Response, next: NextFunction
 router.get("/albums", function(req: Request, res: Response, next: NextFunction) {
     let path = `${config.path}/photography`;
     let albums = [];
+    let excludedFiles = /.*\.md/;
     if (fs.existsSync(path)) {
         fs.readdir(path, (err, dirs) => {
             for (let dir of dirs) {
                 let files =  fs.readdirSync(`${path}/${dir}`);
                 let photos = [];
                 for (let file of files) {
-                    photos.push(`/api/photography/${dir}/${file}`);
+                    if (!excludedFiles.test(file))
+                        photos.push(`/api/photography/${dir}/${file}`);
                 }
                 let res = {};
                 res[dir] = photos;
@@ -42,7 +44,8 @@ router.get("/albumMeta", function(req: Request, res: Response, next: NextFunctio
 
     fs.readFile(path, "utf8", (err, data) => {
         if (err) next(new Error("No description."));
-        else res.status(200).send({file: data});
+        else if (data.length > 0) res.status(200).send({file: data});
+        else res.status(200).send({file: null});
     });
 });
 
