@@ -83,6 +83,7 @@ export class WritingComponent implements OnInit {
                 let title = file.file.title || content.title;
                 this.file = new HtmlFile(file.file.body, title, null, file.file.style, misc);                
                 this.drawer.hide = misc.meta ? false : true;
+                this.drawer.active = false;
             });
     }
 
