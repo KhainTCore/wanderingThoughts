@@ -15,7 +15,7 @@ router.use(function fetchWriting(req: Request, res: Response, next: NextFunction
     next();
 });
 
-router.get("/albums", function(req: Request, res: Response, next: NextFunction) {
+router.get("/albums", (req: Request, res: Response, next: NextFunction) => {
     let path = `${config.path}/photography`;
     let albums = [];
     let excludedFiles = /.*\.md/;
@@ -38,7 +38,7 @@ router.get("/albums", function(req: Request, res: Response, next: NextFunction) 
     } else next(new Error("No photography albums found"));
 });
 
-router.get("/albumMeta", function(req: Request, res: Response, next: NextFunction) {
+router.get("/albumMeta", (req: Request, res: Response, next: NextFunction) => {
     let path = `${config.path}/photography/${req.query.album}/meta.md`;
 
     fs.readFile(path, "utf8", (err, data) => {
@@ -48,7 +48,7 @@ router.get("/albumMeta", function(req: Request, res: Response, next: NextFunctio
     });
 });
 
-router.get("/code", function(req: Request, res: Response, next: NextFunction) {
+router.get("/code", (req: Request, res: Response, next: NextFunction) => {
     let component = req.query.component;
     let codeFiles = [];
     let path = helpers.root(`src/app/shared/${component}`);
@@ -67,7 +67,7 @@ router.get("/code", function(req: Request, res: Response, next: NextFunction) {
     });
 });
 
-router.get("/codeList", function(req: Request, res: Response, next: NextFunction) {
+router.get("/codeList", (req: Request, res: Response, next: NextFunction) => {
     let path = helpers.root("src/app/shared");
     let codeList = [];
 
@@ -82,7 +82,7 @@ router.get("/codeList", function(req: Request, res: Response, next: NextFunction
     });
 });
 
-router.get("/file", function(req: Request, res: Response, next: NextFunction) {
+router.get("/file", (req: Request, res: Response, next: NextFunction) => {
     const validExts: string[] = [".html", ".txt"];
     let typeDir: string = getType(req.query.type);
     let filePath = `${config.path}/${typeDir}/${req.query.title}`; // TODO: Filter (security precaution)
@@ -112,7 +112,7 @@ router.get("/file", function(req: Request, res: Response, next: NextFunction) {
     }
 });
 
-router.get("/fileList", function(req: Request, res: Response, next: NextFunction) {
+router.get("/fileList", (req: Request, res: Response, next: NextFunction) => {
     let typeDir: string = getType(req.query.type);
 
     fs.readdir(`${config.path}/${typeDir}`, "utf8", function(err, files) {
@@ -132,7 +132,7 @@ router.get("/fileList", function(req: Request, res: Response, next: NextFunction
     });
 });
 
-router.get("/staticFiles", function(req: Request, res: Response, next: NextFunction) {
+router.get("/staticFiles", (req: Request, res: Response, next: NextFunction) => {
     let typeDir: string = getType(req.query.type);
     let page: string = getPage(req.query.page);
 
