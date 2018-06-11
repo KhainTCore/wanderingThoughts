@@ -4,10 +4,9 @@ import { NextFunction, Request, Response } from "express";
 
 const config = require("../../config/config");
 const helpers = require("../../config/helpers");
-// import helpers from "../../config/helpers";
 import * as config from "../../config/config";
-const HtmlFile = require("../lib/htmlFile");
 const MarkdownFile = require("../lib/markdownFile");
+const HtmlDisplayFile = require("../lib/htmlDisplayFile");
 
 const router = express.Router();
 
@@ -84,20 +83,29 @@ router.get("/codeList", function(req: Request, res: Response, next: NextFunction
 });
 
 router.get("/file", function(req: Request, res: Response, next: NextFunction) {
+    const validExts: string[] = [".html", ".txt"];
     let typeDir: string = getType(req.query.type);
-    // TODO: Handle error in helpers.root it doesn't seem to handle non-existing files well
-    let path = `${config.path}/${typeDir}/${req.query.title}.html`;
-    if (fs.existsSync(path)) {
+    let filePath = `${config.path}/${typeDir}/${req.query.title}`; // TODO: Filter (security precaution)
+    let file;
+    
+    for (let ext of validExts) {
+        if (fs.existsSync(`${filePath}${ext}`))
+            file = `${filePath}${ext}`;
+    }
+
+    if (file) {
         let meta;
         try {
-            meta = fs.readFileSync(`${config.path}/${typeDir}/${req.query.title}.md`, "utf8");
+            meta = fs.readFileSync(`${filePath}.md`, "utf8");
         } catch (e) {}
-        fs.readFile(`${config.path}/${typeDir}/${req.query.title}.html`, "utf8", (err, data) => {
+
+        fs.readFile(file, "utf8", (err, data) => {
             if (err)
                 next(new Error("No file by that name was found."));
             
-            let html: HtmlFile = new HtmlFile(data, meta, null, false);
-            res.status(200).json({file: html});
+            let content: HtmlDisplayFile = new HtmlDisplayFile(data, meta, null, req.query.title);
+            content.parseBodyAndSave(/^#|^<h1>/);
+            res.status(200).json({file: content});
         });
     } else {
         next(new Error(`File "${req.query.title}" does not exist.`));
@@ -106,6 +114,7 @@ router.get("/file", function(req: Request, res: Response, next: NextFunction) {
 
 router.get("/fileList", function(req: Request, res: Response, next: NextFunction) {
     let typeDir: string = getType(req.query.type);
+
     fs.readdir(`${config.path}/${typeDir}`, "utf8", function(err, files) {
         if (err)
             next(new Error("An error occurred when fetching the file list."));
@@ -113,7 +122,7 @@ router.get("/fileList", function(req: Request, res: Response, next: NextFunction
         // Remove extensions and send only .htm(l) files
         let tmp: string[];
         let filteredList: string[] = [];
-        let ext: RegExp = new RegExp("htm(l{0,1})");
+        let ext: RegExp = new RegExp("htm(l{0,1})|txt");
         for (let i = 0; i < files.length; i++) {
             tmp = files[i].split(".");
             if (ext.test(tmp[1]))
