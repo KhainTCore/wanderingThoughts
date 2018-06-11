@@ -81,8 +81,10 @@ export class WritingComponent implements OnInit {
                     meta: file.file.meta ? Prism.highlight(file.file.meta, Prism.languages.markdown) : undefined
                 };
                 let title = file.file.title || content.title;
+                this.fileTitle = title;
                 this.file = new HtmlFile(file.file.body, title, null, file.file.style, misc);                
                 this.drawer.hide = misc.meta ? false : true;
+                this.drawer.active = false;
             });
     }
 

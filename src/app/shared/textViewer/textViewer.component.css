@@ -18,6 +18,10 @@
     margin-top: 8px;
 }
 
+.respect-newlines {
+    white-space: pre-wrap;
+}
+
 p.MsoNormal {
     text-indent: 4em !important;
 }
