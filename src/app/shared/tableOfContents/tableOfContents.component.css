@@ -52,3 +52,11 @@ ul {
     padding-left: 0px;
     overflow: auto;
 }
+
+li {
+    display: flex;
+}
+
+li a, li button {
+    flex: 1;
+}
