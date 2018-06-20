@@ -3,3 +3,4 @@ export * from "./common.service";
 export * from "./fileFetcher.service";
 export * from "./iconRegistry.service";
 export * from "./message.service";
+export * from "./userInfo.service";

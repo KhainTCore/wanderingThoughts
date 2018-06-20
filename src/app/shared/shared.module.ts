@@ -6,16 +6,17 @@ import { TextViewerModule } from "./textViewer/textViewer.module";
 import { ButtonMenuModule } from "./buttonMenu/buttonMenu.module";
 import { TabbedViewerModule } from "./tabbedViewer/tabbedViewer.module";
 import { CardCarouselModule } from "./cardCarousel/cardCarousel.module";
+import { EmailListDialogModule } from "./emailListDialog/emailListDialog.module";
 
 @NgModule({
     declarations: [
         
     ],
     exports: [
-        ButtonMenuModule, CardCarouselModule, TabbedViewerModule, TableOfContentsModule, TextViewerModule
+        ButtonMenuModule, CardCarouselModule, EmailListDialogModule, TabbedViewerModule, TableOfContentsModule, TextViewerModule
     ],
     imports: [
-        ButtonMenuModule, CommonModule, CardCarouselModule, TabbedViewerModule, TableOfContentsModule
+        ButtonMenuModule, CommonModule, CardCarouselModule, EmailListDialogModule, TabbedViewerModule, TableOfContentsModule
     ]
 })
 

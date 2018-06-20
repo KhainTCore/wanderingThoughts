@@ -5,8 +5,9 @@ import express, { Request, Response, NextFunction } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
-import * as fetchFiles from "./routes/fetchFiles";
 import * as common from "./routes/common";
+import * as fetchFiles from "./routes/fetchFiles";
+import * as userInfo from "./routes/userInfo";
 
 const config = require("../config/config");
 
@@ -28,6 +29,7 @@ app.use(express.static(app.get("app")));
 // Routes
 app.use("/api/common", common);
 app.use("/api/fetchFiles", fetchFiles);
+app.use("/api/userInfo", userInfo);
 app.use("/api/photography", express.static(`${config.path}/photography`));
 
 // Keep the front-end router from killing itself
