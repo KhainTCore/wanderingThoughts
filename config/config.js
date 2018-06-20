@@ -17,6 +17,6 @@ if (env === "production") {
     };
 }
 
-config.version = "1.0";
+config.version = "1.1";
 
 module.exports = config;
