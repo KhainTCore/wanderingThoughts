@@ -11,11 +11,10 @@ Things to work on, though nothing is in any particular order ('Cause chaos and m
 * Set up a CI/CD pipeline (pipeline... not pipe) (using Jenkins or some other free equivalent)
 * Implement HTTPS with port 443 (currently just running on http - okay since I don't take user input (gets hacked next week))
 * Ensure AoT Compilation in Angular for Efficiency
-* Create A Deploy Strategy for Uploading Content
+* Create A Deploy Strategy for Uploading Content (Do it the best way - manually, muwahaha)
 
 ### Back-end
 
-* Ensure effective error handling
 * Clean up the damn code. It is getting smelly AF back here!
 
 ### Front-end (General)
@@ -41,6 +40,8 @@ Things to work on, though nothing is in any particular order ('Cause chaos and m
 #### Writing
 
 Blissfully empty (don't burst my bubble, damn it)
+
+* (Bubble popped, sadness) Ensure a Natural sort for the contents of each catagory
 
 ## Future Features
 

@@ -1,0 +1,24 @@
+<form #emailForm="ngForm">
+
+    <h1 mat-dialog-title>Add email to the Mailing List</h1>
+    <div mat-dialog-content>
+        <p>
+            Thank you. I really appreciate that you like my work enough to be willing to subject yourself to emails from me (every something-days/months).
+        </p>
+        <p style="color: #FFB300;">
+            *** Before you do though, I want to let you konw that I am not obfuscating your email address if you send it to me (at the moment). This is a beta
+            feature, so, even though I don't send emails to the front-end in any way or make them query-able, there still is some risk that it could get
+            compromised. If you don't care, go on ahead. If you don, I'd suggest against it.
+        </p>
+        <mat-form-field class="row">
+            <input matInput name="emailAddress" [(ngModel)]="email" placeholder="Email Address"
+                maxlength="254" validEmailAddress required #emailAddress="ngModel"/>
+            </mat-form-field>
+        <p class="input-footer">{{email ? email.length : "0"}} / 254</p>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button [mat-dialog-close]="email" [disabled]="(!emailAddress.valid && emailAddress.dirty) || emailAddress.pristine">Ok</button>
+    </div>
+    
+</form>
