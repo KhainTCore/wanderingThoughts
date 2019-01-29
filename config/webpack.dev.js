@@ -1,24 +1,45 @@
-var webpackMerge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var commonConfig = require('./webpack.common.js');
-var helpers = require('./helpers');
+const webpackMerge = require("webpack-merge");
+const commonConfig = require("./webpack.common");
+const helpers = require("./helpers");
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'cheap-module-eval-source-map',
+    mode: "development",
 
-  output: {
-    path: helpers.root('dist'),
-    publicPath: '/',
-    filename: '[name].js',
-    // chunkFilename: '[id].chunk.js'
-  },
+    devtool: "cheap-module-eval-source-map",
 
-  plugins: [
-    new ExtractTextPlugin('[name].css')
-  ],
+    output: {
+        path: helpers.root("dist"),
+        publicPath: "/",
+        filename: "[name].bundle.js",
+        chunkFilename: "[id].chunk.js"
+    },
 
-  devServer: {
-    historyApiFallback: true,
-    stats: 'minimal'
-  }
+    optimization: {
+        noEmitOnErrors: true
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                loaders: [
+                    { loader: "babel-loader" },
+                    {
+                        loader: "awesome-typescript-loader",
+                        options: {
+                            configFileName: helpers.root("tsconfig.json")
+                        }
+                    },
+                    { loader: "angular2-template-loader" },
+                    { loader: "angular-router-loader" }
+                ],
+                exclude: [/node_modules/]
+            }
+        ]
+    },
+
+    // devServer: {
+    //     historyApiFallback: true,
+    //     stats: "minimal"
+    // }
 });

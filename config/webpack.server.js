@@ -11,6 +11,8 @@ fs.readdirSync('node_modules')
 });
 
 module.exports = {
+    mode: "development",
+    
     entry: {
         "server": "./server/app.ts"
     },
@@ -32,7 +34,7 @@ module.exports = {
                         loader: "awesome-typescript-loader",
                         options: { configFileName: helpers.root("tsconfig.server.json")}
                     }
-                ]
+                ],
             }
         ]
     },

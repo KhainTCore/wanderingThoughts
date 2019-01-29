@@ -1,31 +1,59 @@
-var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var commonConfig = require('./webpack.common.js');
-var helpers = require('./helpers');
+const webpackMerge = require("webpack-merge");
+const ngw = require("@ngtools/webpack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssnano = require("cssnano");
+
+const commonConfig = require("./webpack.common");
+const helpers = require("./helpers");
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'source-map',
+    mode: "production",
 
-  output: {
-    path: helpers.root('dist'),
-    publicPath: '/',
-    filename: '[name].[hash].js',
-    // chunkFilename: '[id].[hash].chunk.js'
-  },
+    output: {
+        path: helpers.root("dist"),
+        publicPath: "/",
+        filename: "[hash].js",
+        chunkFilename: "[id].[hash].chunk.js"
+    },
 
-  plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
-      mangle: {
-        keep_fnames: true
-      }
-    }),
-    new ExtractTextPlugin('[name].[hash].css'),
-    new webpack.LoaderOptionsPlugin({
-      htmlLoader: {
-        minimize: false // workaround for ng2
-      }
-    })
-  ]
+    optimization: {
+        noEmitOnErrors: true,
+        splitChunks: {
+            chunks: "all"
+        },
+        runtimeChunk: "single",
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true
+            }),
+
+            new OptimizeCSSAssetsPlugin({
+                cssProcessor: cssnano,
+                cssProcessorOptions: {
+                    discardComments: {
+                        removeAll: true
+                    }
+                },
+                canPrint: false
+            })
+        ]
+    },
+
+    module: {
+        rules: [
+            {
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+                loader: "@ngtools/webpack"
+            }
+        ]
+    },
+
+    plugins: [
+        new ngw.AngularCompilerPlugin({
+            tsConfigPath: helpers.root("tsconfig.aot.json"),
+            entryModule: helpers.root("src", "app", "app.module#AppModule")
+        })
+    ]
 });
