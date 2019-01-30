@@ -1,17 +1,25 @@
 # Personal Website
 
 The name makes no sense? Of course it doesn't, it is just a random string of words I threw together. Silly you, thinking there was logic here.
+This is a personal project I'm doing to create a website to host all of my random hobbies. It is also a way for me to work on my webdevelopment
+skills, try out new technologies, and generally experiment with Design and website structure.
+
+Built using Material Design and the core design principle.
 
 ## TODO (Tasks)
 
-Things to work on, though nothing is in any particular order ('Cause chaos and madness are more fun!).
+* Redesign
+  * Follow Material Design Best Practices and Specifications 
+  * More Aesthetic appeal
+  * Easier use of provided features
+  * Experiment 
 
 ### Config/Deploy
 
-* Set up a CI/CD pipeline (pipeline... not pipe) (using Jenkins or some other free equivalent)
+* Set up a CI/CD pipeline (using Jenkins or some other free equivalent)
 * Implement HTTPS with port 443 (currently just running on http - okay since I don't take user input (gets hacked next week))
-* Ensure AoT Compilation in Angular for Efficiency
 * Create A Deploy Strategy for Uploading Content (Do it the best way - manually, muwahaha)
+* Implement AOT Compilation for prod to improve performance
 
 ### Back-end
 
@@ -21,8 +29,7 @@ Things to work on, though nothing is in any particular order ('Cause chaos and m
 
 * Abstract and clean up the CSS for components. At the moment there is a lot of duplication
 * Ensure scalability down to mobile
-* Create Favicon to server up
-* Hide console.logs if in Dev mode (on HTTP Errors)
+* Add loading bar for queries to indicate progress
 
 #### Photography
 
@@ -45,14 +52,11 @@ Blissfully empty (don't burst my bubble, damn it)
 
 ## Future Features
 
-Nothing - everything - because we aren't even at 1.0.0 yet!!!!
+* Books Read this year tracker - bookshelf
 
 ### Unimportant stuff
 
-* Create simple non-persistent chat (socket.io)
-* Add loading bar when querying against the backend or loading a new page of the app
 * Consider using discord as a means of communication
-* Create a mailing list
 
 
 # Real Time
